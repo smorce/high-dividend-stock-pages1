@@ -8,17 +8,17 @@ const getKVData = async () => {
   };
 
   // Fetch all three values concurrently
-  const [platform, version, releaseDate] = await Promise.all([
-    MY_KV_STORE.get("platform", "text"),
-    MY_KV_STORE.get("version", "text"),
-    MY_KV_STORE.get("release_date", "text")
+  const [name, age, city] = await Promise.all([
+    MY_KV_STORE.get("Name", "text"),
+    MY_KV_STORE.get("Age", "text"),
+    MY_KV_STORE.get("City", "text")
   ]);
 
-  return { platform, version, releaseDate };
+  return { name, age, city };
 };
 
 export default async function Home() {
-  const { platform, version, releaseDate } = await getKVData();
+  const { name, age, city } = await getKVData();
 
   return (
     <main className="p-8">
@@ -31,16 +31,16 @@ export default async function Home() {
         </thead>
         <tbody className="bg-white dark:bg-slate-800">
           <tr>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">Platform</td>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">{platform}</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8">Name</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8">{name}</td>
           </tr>
           <tr>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">Version</td>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">{version}</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8">Age</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8">{age}</td>
           </tr>
           <tr>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">Release Date</td>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">{releaseDate}</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8">City</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8">{city}</td>
           </tr>
         </tbody>
       </table>
