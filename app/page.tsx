@@ -2,26 +2,11 @@ import { KVNamespace } from "@cloudflare/workers-types";
 
 export const runtime = "edge";
 
-// const getKVData = async () => {
-//   const { MY_KV_STORE } = process.env as unknown as {
-//     MY_KV_STORE: KVNamespace;
-//   };
-
-//   // Fetch all three values concurrently
-//   const [name, age, city] = await Promise.all([
-//     MY_KV_STORE.get("Name", "text"),
-//     MY_KV_STORE.get("Age", "text"),
-//     MY_KV_STORE.get("City", "text")
-//   ]);
-
-//   return { name, age, city };
-// };
-
-// 事前に定義されたKV Namespaceバインディングを直接使用します。　←　ダメだった
-// このバインディング名はwrangler.tomlで設定した名前に一致させる必要があります。
-declare const MY_KV_STORE: KVNamespace;
-
 const getKVData = async () => {
+  const { MY_KV_STORE } = process.env as unknown as {
+    MY_KV_STORE: KVNamespace;
+  };
+
   // Fetch all three values concurrently
   const [name, age, city] = await Promise.all([
     MY_KV_STORE.get("Name", "text"),
@@ -31,6 +16,21 @@ const getKVData = async () => {
 
   return { name, age, city };
 };
+
+// 事前に定義されたKV Namespaceバインディングを直接使用します。　←　ダメだった
+// このバインディング名はwrangler.tomlで設定した名前に一致させる必要があります。
+// declare const MY_KV_STORE: KVNamespace;
+
+// const getKVData = async () => {
+//   // Fetch all three values concurrently
+//   const [name, age, city] = await Promise.all([
+//     MY_KV_STORE.get("Name", "text"),
+//     MY_KV_STORE.get("Age", "text"),
+//     MY_KV_STORE.get("City", "text")
+//   ]);
+
+//   return { name, age, city };
+// };
 
 
 
