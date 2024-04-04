@@ -26,14 +26,24 @@ jobs:
           pip install pandas numpy
       - name: Generate data.json
         run: python generate_data.py
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Install Wrangler CLI
-        run: |
-          npm uninstall -g @cloudflare/wrangler # 古いバージョンがあればアンインストール
-          npm install -g wrangler # 最新版をインストール
-      - name: Configure Wrangler with API token
-        run: wrangler config --api-key
         env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }} # GitHub SecretからAPIトークンを取得
+        run: |
+          npm uninstall -g @cloudflare/wrangler
+          npm install -g @cloudflare/wrangler
+          wrangler publish --api-token $CF_API_TOKEN
+
+
       - name: Upload data.json to KV
         run: wrangler kv:key put --binding=MY_KV_STORE "data.json" ./data.json --path
         env:
