@@ -11,9 +11,6 @@ on:
         description: 'Log level'
         required: true
         default: 'warning'
-      environment:
-        description: 'Environment name'
-        required: true
 
 jobs:
   update_and_upload:
