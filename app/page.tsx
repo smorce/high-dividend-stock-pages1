@@ -9,14 +9,15 @@ const getKVData = async () => {
 
   // Fetch all three values concurrently
   const [name, age, city] = await Promise.all([
-    MY_KV_STORE.get("Name", "text"),
-    MY_KV_STORE.get("Age", "text"),
-    MY_KV_STORE.get("City", "text")
+    MY_KV_STORE.get("Name", "text").then(data => JSON.parse(data || '[]')),
+    MY_KV_STORE.get("Age", "text").then(data => JSON.parse(data || '[]')),
+    MY_KV_STORE.get("City", "text").then(data => JSON.parse(data || '[]'))
   ]);
 
   return { name, age, city };
 };
 
+// 取得した配列を使用して表を動的に生成
 export default async function Home() {
   const { name, age, city } = await getKVData();
 
@@ -25,23 +26,19 @@ export default async function Home() {
       <table className="w-full text-left border-collapse">
         <thead>
           <tr>
-            <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">Key</th>
-            <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">Value</th>
+            <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">Name</th>
+            <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">Age</th>
+            <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">City</th>
           </tr>
         </thead>
         <tbody className="bg-white dark:bg-slate-800">
-          <tr>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">Name</td>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">{name}</td>
-          </tr>
-          <tr>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">Age</td>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">{age}</td>
-          </tr>
-          <tr>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">City</td>
-            <td className="border-b dark:border-slate-700 p-4 pl-8">{city}</td>
-          </tr>
+          {name.map((n: string, index: number) => (
+            <tr key={index}>
+              <td className="border-b dark:border-slate-700 p-4 pl-8">{n}</td>
+              <td className="border-b dark:border-slate-700 p-4 pl-8">{age[index]}</td>
+              <td className="border-b dark:border-slate-700 p-4 pl-8">{city[index]}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </main>
