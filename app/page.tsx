@@ -2,7 +2,6 @@ import { KVNamespace } from "@cloudflare/workers-types";
 
 export const runtime = "edge";
 
-// GitHub Actions でも使えるように変更？？
 // const getKVData = async () => {
 //   const { MY_KV_STORE } = process.env as unknown as {
 //     MY_KV_STORE: KVNamespace;
@@ -18,7 +17,7 @@ export const runtime = "edge";
 //   return { name, age, city };
 // };
 
-// 事前に定義されたKV Namespaceバインディングを直接使用します。
+// 事前に定義されたKV Namespaceバインディングを直接使用します。　←　ダメだった
 // このバインディング名はwrangler.tomlで設定した名前に一致させる必要があります。
 declare const MY_KV_STORE: KVNamespace;
 
@@ -32,6 +31,8 @@ const getKVData = async () => {
 
   return { name, age, city };
 };
+
+
 
 export default async function Home() {
   const { name, age, city } = await getKVData();
