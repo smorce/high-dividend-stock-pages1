@@ -14,6 +14,10 @@ const getKVData = async () => {
     MY_KV_STORE.get("City", "text")
   ]);
 
+  console.log(name);
+  console.log(age);
+  console.log(city);
+
   return { name, age, city };
 };
 
