@@ -8,7 +8,7 @@ compatibility_date = "2024-04-04" # Cloudflare Workersプラットフォーム�
 route = "high-dividend-stock-pages1.pages.dev/*" # 本番環境にデプロイする場合のルート設定。例: "example.com/my-worker/*"
 # zone_id = "" # 本番環境にデプロイする場合のゾーンID。ただし、*.pages.devドメインに設定されている場合、このドメインはCloudflare Pagesによって自動的に管理されており、通常はzone_idの指定は不要
 
-kv_namespaces = [
+KVNamespace = [
   { binding = "MY_KV_STORE", id = "4c6bac05f2064f6aa2a20eb4378571cc" }
 ]
 
