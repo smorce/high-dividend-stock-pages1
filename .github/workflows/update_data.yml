@@ -40,8 +40,8 @@ jobs:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }} # GitHub SecretからAPIトークンを取得
         run: |
           npm uninstall -g @cloudflare/wrangler
-          npm install -g @cloudflare/wrangler
-          wrangler publish --api-token $CF_API_TOKEN
+          npm install -g wrangler
+          wrangler publish
 
 
       - name: Upload data.json to KV
