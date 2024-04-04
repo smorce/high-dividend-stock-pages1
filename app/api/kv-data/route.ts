@@ -1,6 +1,7 @@
+import { NextResponse } from "next/server";
 import { KVNamespace } from "@cloudflare/workers-types";
 
-const getKVData = async () => {
+export async function GET(request: Request) {
   const { MY_KV_STORE } = process.env as unknown as {
     MY_KV_STORE: KVNamespace;
   };
@@ -11,7 +12,5 @@ const getKVData = async () => {
     MY_KV_STORE.get("release_date", "text"),
   ]);
 
-  return { platform, version, releaseDate };
-};
-
-export default getKVData;
+  return NextResponse.json({ platform, version, releaseDate });
+}

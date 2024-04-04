@@ -1,7 +1,6 @@
-import getKVData from "./api/kv-data";
-
 export default async function Home() {
-  const { platform, version, releaseDate } = await getKVData();
+  const res = await fetch("/api/kv-data");
+  const { platform, version, releaseDate } = await res.json();
 
   return (
     <main className="p-8">
