@@ -1,3 +1,21 @@
+// ここでの主な設定内容は以下の通りです:
+
+// lib: ターゲットとする言語の機能を定義しています。dom、dom.iterable、esnextが指定されています。
+// allowJs: JavaScript ファイルのコンパイルを許可しています。
+// skipLibCheck: 型チェックの速度向上のために、標準ライブラリの型チェックをスキップしています。
+// strict: 厳格な型チェックを有効にしています。
+// noEmit: コンパイル結果の出力を無効にしています。Next.jsではこの設定が一般的です。
+// esModuleInterop: ES Modulesと従来のモジュールシステムの相互運用性を有効にしています。
+// module: モジュールシステムとしてesnextを使用しています。
+// moduleResolution: モジュールの解決方法をbundlerモードに設定しています。
+// resolveJsonModule: JSON ファイルをモジュールとしてインポートできるようにしています。
+// isolatedModules: 個別モジュールのコンパイルを有効にしています。これにより、ビルド時の増分コンパイルが可能になります。
+// jsx: JSXの変換方式をpreserveに設定しています。これにより、Next.jsがJSXを適切にハンドリングできるようになります。
+// incremental: 増分型チェックを有効にしています。
+// plugins: Next.jsの型情報プラグインを指定しています。
+// paths: @エイリアスを使用可能にしています。
+
+// 全体としてNext.js 13のApp Routerを使うための最適な設定になっています。特に問題はなく、そのまま使用することができます。
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
