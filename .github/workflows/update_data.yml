@@ -41,7 +41,7 @@ jobs:
         run: |
           npm uninstall -g @cloudflare/wrangler
           npm install -g wrangler
-          wrangler publish
+          wrangler deploy page.tsx
 
 
       - name: Upload data.json to KV
