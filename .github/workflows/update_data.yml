@@ -41,8 +41,8 @@ jobs:
         run: |
           npm uninstall -g @cloudflare/wrangler
           npm install -g wrangler
-          wrangler deploy app/page.tsx --compatibility-date 2024-04-04
-
+          wrangler deploy app/page.tsx
+          
 
       - name: Upload data.json to KV
         run: wrangler kv:key put --binding=MY_KV_STORE "data.json" ./data.json --path
