@@ -1,8 +1,19 @@
 name: Update and Upload Data
 
+# on:
+#   schedule:
+#     - cron: '0 0 1 * *' # 毎月1日に実行
+
 on:
-  schedule:
-    - cron: '0 0 1 * *' # 毎月1日に実行
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      environment:
+        description: 'Environment name'
+        required: true
 
 jobs:
   update_and_upload:
