@@ -14,30 +14,8 @@ const getKVData = async () => {
     MY_KV_STORE.get("City", "text")
   ]);
 
-  console.log(MY_KV_STORE);
-  console.log(name);
-  console.log(age);
-  console.log(city);
-
   return { name, age, city };
 };
-
-// 事前に定義されたKV Namespaceバインディングを直接使用します。　←　ダメだった
-// このバインディング名はwrangler.tomlで設定した名前に一致させる必要があります。
-// declare const MY_KV_STORE: KVNamespace;
-
-// const getKVData = async () => {
-//   // Fetch all three values concurrently
-//   const [name, age, city] = await Promise.all([
-//     MY_KV_STORE.get("Name", "text"),
-//     MY_KV_STORE.get("Age", "text"),
-//     MY_KV_STORE.get("City", "text")
-//   ]);
-
-//   return { name, age, city };
-// };
-
-
 
 export default async function Home() {
   const { name, age, city } = await getKVData();
