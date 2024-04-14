@@ -56,7 +56,7 @@ export default function Home({ data }: HomeProps) {
           <p className="text-sm">　配当利回り：3%以上9%以下を抽出</p>
         </div> */}
         <div className="summary-container">
-          <div className="summary-header" title="ホバーして詳細を表示">
+          <div className="summary-header" title="集計条件">
             【集計条件】
             <div className="tooltip-content">
               選定企業：S&P500より選定<br />

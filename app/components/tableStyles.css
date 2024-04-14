@@ -122,19 +122,20 @@ table td, table th {
 }
 .summary-container .tooltip-content {
     visibility: hidden;
-    width: 300px;
-    background-color: black;
-    color: white;
+    width: auto; /* または適切な最大幅に設定 */
+    max-width: 300px; /* 最大幅を超えないように設定 */
+    background-color: #b9c7c2;
+    color: #1C3B50;
     text-align: left;
     border-radius: 6px;
     padding: 8px;
     position: absolute;
     z-index: 1;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -150px; /* Use half of the width (300px/2) to center the tooltip */
+    bottom: 125%; /* ツールチップの位置を調整 */
+    left: 50%; /* ツールチップの中心を基点にする */
+    transform: translateX(-50%); /* 中心から左に50%移動して中央揃えに */
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: visibility 0s, opacity 0.3s linear;
 }
 .summary-container .summary-header:hover .tooltip-content {
     visibility: visible;
