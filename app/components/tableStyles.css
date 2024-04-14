@@ -14,12 +14,12 @@ table {
 }
 .button-3d {
     /* background-color: #00D1D6; */
-    padding: 10px;
+    /* color: white; */
     max-width: 250px;
     border-radius: 5px;
     text-align: center;
-    margin: 30px auto;
-    /* color: white; */
+    padding: 5px;
+    margin: 15px auto;
     box-shadow: 0 2px 3px #7e8183e6;
     font-size: 18px;
 }
