@@ -43,22 +43,33 @@ export default function Home({ data }: HomeProps) {
 
       <div className="container mx-auto px-4 py-2">
         <div className="header">
-          <h1 className="text-2xl font-semibold" style={{ color: "#ff7f50" }}>
-            <span style={{ color: "#ff7f50" }}>高配当</span> 株 分析サイト
+          <h1 className="text-2xl font-semibold">
+            <span style={{ color: "#ff7f50" }}>高配当</span>株 分析サイト
           </h1>
         </div>
-        <div className="sub-header">
+        {/* <div className="sub-header">
           <p className="text-sm">アメリカ株式 専門</p><br />
           <p className="text-sm">【集計条件】</p>
           <p className="text-sm">　選定企業：S&P500より選定</p>
           <p className="text-sm">　除外対象1：BRK.BとBF.Bはデータがほぼないため除外</p>
           <p className="text-sm">　除外対象2：GOOG を採用し GOOGL は除外</p>
           <p className="text-sm">　配当利回り：3%以上9%以下を抽出</p>
+        </div> */}
+        <div className="summary-container">
+          <div className="summary-header" title="ホバーして詳細を表示">
+            【集計条件】
+            <div className="tooltip-content">
+              選定企業：S&P500より選定<br />
+              除外対象1：BRK.BとBF.Bはデータがほぼないため除外<br />
+              除外対象2：GOOG を採用し GOOGL は除外<br />
+              配当利回り：3%以上9%以下を抽出
+            </div>
+          </div>
         </div>
         <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
           <div className={`toggle-switch ${isDataExpanded ? 'active' : ''}`} onClick={toggleData}></div>
           <span className="toggle-text" id="toggleLabel" onClick={toggleData}>
-            {isDataExpanded ? "Hide Data" : "Show More Data"}
+            {isDataExpanded ? "Show More Data" : "Show More Data"}
           </span>
         </div>
         <div className="overflow-x-auto mt-6 table-shadow">

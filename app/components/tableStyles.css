@@ -110,11 +110,35 @@ table td, table th {
 .header h1 {
     font-size: 5rem;
 }
-.sub-header {
+/* .sub-header {
     text-align: left;
     color: #64748b;
     margin-bottom: 1rem;
     padding-top:   0rem;
+} */
+.summary-container .summary-header {
+    position: relative;
+    display: inline-block;
+}
+.summary-container .tooltip-content {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: white;
+    text-align: left;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -150px; /* Use half of the width (300px/2) to center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.summary-container .summary-header:hover .tooltip-content {
+    visibility: visible;
+    opacity: 1;
 }
 .nav-links {
     display: flex;
