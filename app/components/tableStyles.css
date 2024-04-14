@@ -108,6 +108,11 @@ table {
 .header h1 {
     font-size: 5rem;
 }
+.summary-container .summary-header {
+    position: relative;
+    display: inline-block;
+    width: 300px; /* 横幅を300pxに固定 */
+}
 .summary-container .tooltip-content {
     visibility: hidden;
     background-color: #e2e4e0;
@@ -125,6 +130,10 @@ table {
     transition: visibility 0s, opacity 0.3s linear;
     max-width: 300px; /* ホバー時の最大幅を設定 */
     white-space: normal; /* テキストを自動的に折り返す */
+}
+.summary-container .summary-header:hover .tooltip-content {
+    visibility: visible;
+    opacity: 1;
 }
 .nav-links {
     display: flex;
