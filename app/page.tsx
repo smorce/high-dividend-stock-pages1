@@ -1,7 +1,7 @@
 import { KVNamespace } from "@cloudflare/workers-types";
 import Home from './components/Home';
 
-export const runtime = "edge";
+export const runtime = "edge";   // サーバーサイドを示す
 
 const getKVData = async () => {
   const { MY_KV_STORE } = process.env as unknown as {
