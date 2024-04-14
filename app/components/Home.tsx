@@ -47,10 +47,11 @@ export default function Home({ data }: HomeProps) {
         </div>
         <div className="sub-header">
           <p className="text-sm">アメリカ株式 専門</p><br />
-          <p className="text-sm">【集計条件】選定企業：S&P500より選定</p>
-          <p className="text-sm">除外対象1：BRK.BとBF.Bはデータがほぼないため除外</p>
-          <p className="text-sm">除外対象2：GOOG を採用し GOOGL は除外</p>
-          <p className="text-sm">配当利回り：3%以上9%以下を抽出</p>
+          <p className="text-sm">【集計条件】</p>
+          <p className="text-sm">　選定企業：S&P500より選定</p>
+          <p className="text-sm">　除外対象1：BRK.BとBF.Bはデータがほぼないため除外</p>
+          <p className="text-sm">　除外対象2：GOOG を採用し GOOGL は除外</p>
+          <p className="text-sm">　配当利回り：3%以上9%以下を抽出</p>
         </div>
         <button className="toggle-switch" onClick={toggleData}>
           {isDataExpanded ? "Hide Data" : "Show More Data"}
@@ -67,20 +68,43 @@ export default function Home({ data }: HomeProps) {
                 <th scope="col" className="px-6 py-3">Dividend Yield</th>
                 <th scope="col" className="px-6 py-3">Overall</th>
                 <th scope="col" className="px-6 py-3">Analyst Comment</th>
+                {isDataExpanded && (
+                  <motion.th
+                    initial={{ x: -100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 100, opacity: 0 }}
+                    scope="col"
+                    className="px-6 py-3"
+                  >
+                    ニューカラム
+                  </motion.th>
+                )}
               </tr>
             </thead>
-            <tbody>
-              <tr className="bg-white border-b">
-                <td className="px-6 py-4">XXXXXX</td>
-                <td className="px-6 py-4">XXXXXXXXXX</td>
-                <td className="px-6 py-4">Score</td>
-                <td className="px-6 py-4">Score</td>
-                <td className="px-6 py-4">Score</td>
-                <td className="px-6 py-4"><span className="score-pill">Score</span></td>
-                <td className="px-6 py-4">Score</td>
-                <td className="px-6 py-4"><span className="score-pill">Comment</span></td>
-              </tr>
-            </tbody>
+            <AnimatePresence>
+              <tbody>
+                <tr className="bg-white border-b">
+                  <td className="px-6 py-4">XXXXXX</td>
+                  <td className="px-6 py-4">XXXXXXXXXX</td>
+                  <td className="px-6 py-4">Score</td>
+                  <td className="px-6 py-4">Score</td>
+                  <td className="px-6 py-4">Score</td>
+                  <td className="px-6 py-4"><span className="score-pill">Score</span></td>
+                  <td className="px-6 py-4">Score</td>
+                  <td className="px-6 py-4"><span className="score-pill">Comment</span></td>
+                  {isDataExpanded && (
+                    <motion.th
+                      initial={{ x: -100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 100, opacity: 0 }}
+                      className="px-6 py-4"
+                    >
+                      aaaaaaaaaaaaaaaaaaaaa
+                    </motion.th>
+                  )}
+                </tr>
+              </tbody>
+            </AnimatePresence>
           </table>
         </div>
       </div>
