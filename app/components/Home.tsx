@@ -4,8 +4,22 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// useClient();
+
+// 型定義
+interface DataProps {
+  name: string[];
+  age:  string[];   // number
+  city: string[];
+}
+
+interface HomeProps {
+  data: DataProps;
+}
+
 // export default async function Home({ data }) {
-export default function Home({ data }) {
+// export default function Home({ data }) {
+export default function Home({ data }: HomeProps) {
   const [isCityVisible, setIsCityVisible] = useState(true);
 
   // Cityカラムの表示/非表示を切り替える関数
