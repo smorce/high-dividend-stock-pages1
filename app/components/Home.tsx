@@ -43,7 +43,9 @@ export default function Home({ data }: HomeProps) {
 
       <div className="container mx-auto px-4 py-2">
         <div className="header">
-          <h1 className="text-2xl font-semibold" style={{ color: "#ff7f50" }}>高配当株 分析サイト</h1>
+          <h1 className="text-2xl font-semibold" style={{ color: "#ff7f50" }}>
+            <span style={{ color: "#ff7f50" }}>高配当</span> 株 分析サイト
+          </h1>
         </div>
         <div className="sub-header">
           <p className="text-sm">アメリカ株式 専門</p><br />
@@ -53,9 +55,12 @@ export default function Home({ data }: HomeProps) {
           <p className="text-sm">　除外対象2：GOOG を採用し GOOGL は除外</p>
           <p className="text-sm">　配当利回り：3%以上9%以下を抽出</p>
         </div>
-        <button className="toggle-switch" onClick={toggleData}>
-          {isDataExpanded ? "Hide Data" : "Show More Data"}
-        </button>
+        <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
+          <div className="toggle-switch" id="toggleButton" onClick={toggleData}></div>
+          <span className="toggle-text" id="toggleLabel" onClick={toggleData}>
+            {isDataExpanded ? "Hide Data" : "Show More Data"}
+          </span>
+        </div>
         <div className="overflow-x-auto mt-6 table-shadow">
           <table className="w-full text-sm text-left text-gray-500" id="data-table">
             <thead className="table-header text-xs text-gray-700 uppercase">
@@ -99,7 +104,7 @@ export default function Home({ data }: HomeProps) {
                       exit={{ x: 100, opacity: 0 }}
                       className="px-6 py-4"
                     >
-                      aaaaaaaaaaaaaaaaaaaaa
+                      aaaaaaaaaa
                     </motion.th>
                   )}
                 </tr>

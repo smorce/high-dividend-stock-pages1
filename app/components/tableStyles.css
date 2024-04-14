@@ -5,9 +5,13 @@ body {
 }
 .table-header {
     background-color: #F7FAFC;
+    border-left: none;    /* 縦線を消す */
+    border-right: none;   /* 縦線を消す */
 }
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border-left: none;     /* 縦線を消す */
+    border-right: none;    /* 縦線を消す */
 }
 .toggle-switch {
     display: inline-block;
