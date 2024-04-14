@@ -89,7 +89,7 @@ export default function Home({ data }: HomeProps) {
                   <motion.th
                     initial={{ x: -100, opacity: 0 }} // 左から登場
                     animate={{ x: 0, opacity: 1 }}    // 中央へ移動し、完全に表示
-                    exit={{ x: 100, opacity: 0 }}    // 右から左へのアニメーション？
+                    exit={{ x: 100, opacity: 0 }}    // 右から左へのアニメーション？ できてないけど一旦OK
                     transition={{ duration: 0.2 }}    // アニメーションの時間はN秒
                     scope="col"
                     className="px-6 py-3"
@@ -114,7 +114,7 @@ export default function Home({ data }: HomeProps) {
                     <motion.td
                       initial={{ x: -100, opacity: 0 }} // 左から登場
                       animate={{ x: 0, opacity: 1 }}    // 中央へ移動し、完全に表示
-                      exit={{ x: 100, opacity: 0 }}    // 右から左へのアニメーション？
+                      exit={{ x: 100, opacity: 0 }}    // 右から左へのアニメーション？ できてないけど一旦OK
                       transition={{ duration: 0.2 }}    // アニメーションの時間はN秒
                       className="px-6 py-4"
                     >
