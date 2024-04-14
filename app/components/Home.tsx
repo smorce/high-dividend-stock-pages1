@@ -56,7 +56,7 @@ export default function Home({ data }: HomeProps) {
           <p className="text-sm">　配当利回り：3%以上9%以下を抽出</p>
         </div>
         <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
-          <div className="toggle-switch" id="toggleButton" onClick={toggleData}></div>
+          <div className={`toggle-switch ${isDataExpanded ? 'active' : ''}`} onClick={toggleData}></div>
           <span className="toggle-text" id="toggleLabel" onClick={toggleData}>
             {isDataExpanded ? "Hide Data" : "Show More Data"}
           </span>
