@@ -3,10 +3,8 @@ body {
     background-color: #F9FAF7;
     color: #1C3B50;
 }
-/* 全てのテーブルセルから縦線を消す */
-table td, table th {
-    border-left: none;
-    border-right: none;
+table {
+    border-collapse: collapse;
 }
 .table-header {
     background-color: #F7FAFC;
@@ -110,38 +108,23 @@ table td, table th {
 .header h1 {
     font-size: 5rem;
 }
-/* .sub-header {
-    text-align: left;
-    color: #64748b;
-    margin-bottom: 1rem;
-    padding-top:   0rem;
-} */
-.summary-container .summary-header {
-    position: relative;
-    display: inline-block;
-}
 .summary-container .tooltip-content {
     visibility: hidden;
-    /* width: auto; */
-    background-color: #d0d1cf;
+    background-color: #e2e4e0;
     color: #1C3B50;
     text-align: left;
     border-radius: 6px;
     padding: 8px;
     position: absolute;
     z-index: 1;
-    top: 50%; /* 要素の上から50%の位置 */
-    left: 100%; /* 要素の右側に */
-    transform: translateY(-50%); /* 中心から上に50%移動して中央揃えに */
-    margin-left: 8px; /* 親要素との間に少し間隔を持たせる */
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    margin-left: 8px;
     opacity: 0;
     transition: visibility 0s, opacity 0.3s linear;
-}
-.summary-container .summary-header:hover .tooltip-content {
+    max-width: 300px; /* ホバー時の最大幅を設定 */
     white-space: normal; /* テキストを自動的に折り返す */
-    visibility: visible;
-    opacity: 1;
-    max-width: 300px;
 }
 .nav-links {
     display: flex;

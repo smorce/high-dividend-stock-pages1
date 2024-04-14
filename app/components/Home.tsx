@@ -57,8 +57,7 @@ export default function Home({ data }: HomeProps) {
         </div> */}
         <div className="summary-container">
           <div className="summary-header" title="集計条件">
-            集計条件はこちら
-            <br/>
+            集計条件はこちら<br/>
             <div className="tooltip-content">
               選定企業：S&P500より選定<br />
               除外対象1：BRK.BとBF.Bはデータがほぼないため除外<br />
