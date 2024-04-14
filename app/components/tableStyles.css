@@ -4,7 +4,7 @@ body {
     color: #1C3B50;
 }
 table {
-    border-collapse: collapse;
+    border-collapse: collapse;   /* テーブルのセルの間の隙間を埋める */
 }
 .table-header {
     background-color: #F7FAFC;
@@ -62,32 +62,28 @@ table {
 .header h1 {
     font-size: 5rem;
 }
-.summary-container .summary-header {
-    position: relative;
-    display: inline-block;
+.summary-container {
+    width: 100%; /* コンテナの幅設定 */
 }
-.summary-container .tooltip-content {
-    visibility: hidden;
+.summary-header {
+    position: relative; /* ツールチップの位置調整のために相対位置設定 */
+    margin-bottom: 20px; /* 下部に20pxの隙間を追加 */
+    cursor: pointer; /* ホバー時にカーソルをポインターに変更 */
+}
+.tooltip-content {
+    display: none; /* デフォルトでは非表示 */
+    position: absolute; /* 絶対位置指定 */
     background-color: #e2e4e0;
     color: #1C3B50;
-    text-align: left;
-    border-radius: 6px;
-    padding: 10px;  /* paddingを少し増やしました */
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 100%;
-    transform: translateY(-50%);
-    margin-left: 8px;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s linear;
-    max-width: 500px;  /* max-widthを増やしました */
-    font-size: 14px;  /* font-sizeを適切な値に調整する */
+    border: 1px solid #ccc; /* 境界線 */
+    padding: 10px; /* 内側の余白 */
+    width: 200px; /* 幅の設定 */
+    left: 100%; /* 親要素から左に100%の位置に設定 */
+    top: 0; /* 上部からの位置 */
+    z-index: 1000; /* 他の要素より前面に表示 */
 }
-.summary-container .summary-header:hover .tooltip-content {
-    white-space: normal;
-    visibility: visible;
-    opacity: 1;
+.summary-header:hover .tooltip-content {
+    display: block; /* ホバー時に表示 */
 }
 .nav-links {
     display: flex;

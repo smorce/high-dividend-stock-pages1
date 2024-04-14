@@ -26,6 +26,7 @@
     rgb(var(--background-start-rgb));
 } */
 
+/* 以下は必要 */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
