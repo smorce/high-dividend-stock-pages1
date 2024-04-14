@@ -91,8 +91,8 @@ export default function Home({ data }: HomeProps) {
                     // exit={{ x: 100, opacity: 0 }}
                     initial={{ x: -100, opacity: 0 }} // 左から登場
                     animate={{ x: 0, opacity: 1 }}    // 中央へ移動し、完全に表示
-                    exit={{ x: 100, opacity: 0 }}     // 右へ退出し、透明に
-                    transition={{ duration: 0.8 }}    // アニメーションの時間は0.8秒
+                    exit={{ x: -100, opacity: 0 }}    // 右から左へのアニメーション
+                    transition={{ duration: 1.0 }}    // アニメーションの時間は0.8秒
                     scope="col"
                     className="px-6 py-3"
                   >
@@ -119,8 +119,8 @@ export default function Home({ data }: HomeProps) {
                       // exit={{ x: 100, opacity: 0 }}
                       initial={{ x: -100, opacity: 0 }} // 左から登場
                       animate={{ x: 0, opacity: 1 }}    // 中央へ移動し、完全に表示
-                      exit={{ x: 100, opacity: 0 }}     // 右へ退出し、透明に
-                      transition={{ duration: 0.8 }}    // アニメーションの時間は0.8秒
+                      exit={{ x: -100, opacity: 0 }}    // 右から左へのアニメーション
+                      transition={{ duration: 1.0 }}    // アニメーションの時間は0.8秒
                       className="px-6 py-4"
                     >
                       aaaaaaaaaa

@@ -65,20 +65,21 @@ table {
 .summary-header {
     position: relative;
     display: inline-block;
+    margin-bottom: 30px;
 }
 .tooltip-content {
     visibility: hidden;
     width: 300px;
-    background-color: #e2e4e0;
-    color: #1C3B50;
-    text-align: center;
-    padding: 5px;
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+    padding: 10px;
     border-radius: 6px;
     position: absolute;
     z-index: 1;
-    bottom: 150%;
-    left: 50%;
-    margin-left: -150px;
+    top: 50%;
+    left: 105%;
+    transform: translateY(-50%);
     opacity: 0;
     transition: opacity 0.3s;
 }
