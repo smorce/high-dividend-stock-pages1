@@ -1,4 +1,6 @@
 import { KVNamespace } from "@cloudflare/workers-types";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export const runtime = "edge";
 
@@ -20,15 +22,30 @@ const getKVData = async () => {
 // 取得した配列を使用して表を動的に生成
 export default async function Home() {
   const { name, age, city } = await getKVData();
+  const [isCityVisible, setIsCityVisible] = useState(true);
+  
+  const toggleCityColumn = () => {
+    setIsCityVisible(!isCityVisible);
+  };
 
   return (
     <main className="p-8">
+      <button onClick={toggleCityColumn}>Toggle City Column</button>
       <table className="w-full text-left border-collapse">
         <thead>
           <tr>
             <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">Name</th>
             <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">Age</th>
-            <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">City</th>
+            {isCityVisible && (
+              <motion.th
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 100, opacity: 0 }}
+                className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800"
+              >
+                City
+              </motion.th>
+            )}
           </tr>
         </thead>
         <tbody className="bg-white dark:bg-slate-800">
@@ -36,7 +53,16 @@ export default async function Home() {
             <tr key={index}>
               <td className="border-b dark:border-slate-700 p-4 pl-8">{n}</td>
               <td className="border-b dark:border-slate-700 p-4 pl-8">{age[index]}</td>
-              <td className="border-b dark:border-slate-700 p-4 pl-8">{city[index]}</td>
+              {isCityVisible && (
+                <motion.td
+                  initial={{ x: -100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 100, opacity: 0 }}
+                  className="border-b dark:border-slate-700 p-4 pl-8"
+                >
+                  {city[index]}
+                </motion.td>
+              )}
             </tr>
           ))}
         </tbody>
