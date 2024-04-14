@@ -12,6 +12,23 @@ table {
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
+.button-3d {
+    background-color: #f0f0f0; /* ボタンの背景色 */
+    color: #333; /* ボタンのテキスト色 */
+    padding: 10px 20px; /* ボタンの内側の余白 */
+    border: none; /* ボタンの境界線をなしに */
+    border-radius: 5px; /* ボタンの角を少し丸める */
+    box-shadow: 0 4px #999; /* 下に影をつけて立体感を出す */
+    transition: all 0.2s ease; /* アニメーションのための遷移を滑らかに */
+}
+.button-3d:hover {
+    background-color: #e8e8e8; /* ホバー時の背景色を少し暗く */
+}
+.button-3d:active {
+    background-color: #ddd; /* クリック時の背景色をさらに暗く */
+    box-shadow: 0 2px #666; /* 影を短くして押されたように見せる */
+    transform: translateY(2px); /* ボタンを少し下に動かして押された感じに */
+}
 .toggle-container {
     display: flex;
     align-items: center;
@@ -56,8 +73,8 @@ table {
 }
 .header {
     text-align: left;
-    margin-bottom: 1rem;
-    padding-top:   1rem;
+    margin-bottom: 2rem;
+    padding-top:   2rem;
 }
 .header h1 {
     font-size: 5rem;
