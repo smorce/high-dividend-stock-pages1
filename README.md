@@ -7,17 +7,17 @@
 - http://localhost:3000 にアクセス
 
 
+## トグルボタンの状態管理はサーバーサイドでは行えないのでクライアントサイドに切り出した
 .
 ├── app/                        # App Directoryのルート
 │   ├── components/             # 再利用可能なコンポーネント
 │   │   └── Home.tsx            # メインのクライアントコンポーネント
-│   ├── data/                   # データ取得やAPI呼び出し関連のロジック
-│   │   └── getServerSideProps.ts # サーバーサイドのデータ取得ロジック
-│   └── page.tsx                # ページのエントリーポイント
-├── public/                     # 静的ファイル
-│   ├── images/
-│   └── favicon.ico
-├── styles/                     # スタイルシート
 │   └── globals.css
+│   └── favicon.ico
+│   └── layout.tsx
+│   └── page.tsx                # ページのエントリーポイント。データ取得をココで行う
+├── public/                     # 静的ファイル
+├── styles/                     # スタイルシート
+│   └── tableStyles.css
 ├── next.config.js              # Next.jsの設定ファイル
 └── package.json                # パッケージ依存関係とスクリプト

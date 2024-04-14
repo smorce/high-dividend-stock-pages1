@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import './tableStyles.css';
 
 // useClient();
 
@@ -17,57 +18,72 @@ interface HomeProps {
   data: DataProps;
 }
 
-// export default async function Home({ data }) {
-// export default function Home({ data }) {
+// export default async function Home({ data }: HomeProps) {
 export default function Home({ data }: HomeProps) {
-  const [isCityVisible, setIsCityVisible] = useState(true);
+  const [isDataExpanded, setIsDataExpanded] = useState(false);
 
-  // Cityカラムの表示/非表示を切り替える関数
-  const toggleCityColumn = () => {
-    setIsCityVisible(!isCityVisible);
+  const toggleData = () => {
+    setIsDataExpanded(!isDataExpanded);
   };
 
   return (
-    <main className="p-8">
-      <button onClick={toggleCityColumn}>Toggle City Column</button>
-      <table className="w-full text-left border-collapse">
-        <thead>
-          <tr>
-            <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">Name</th>
-            <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800">Age</th>
-            {isCityVisible && (
-              <motion.th
-                initial={{ x: -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 100, opacity: 0 }}
-                className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 bg-slate-50 dark:bg-slate-800"
-              >
-                City
-              </motion.th>
-            )}
-          </tr>
-        </thead>
-        <AnimatePresence>
-          <tbody className="bg-white dark:bg-slate-800">
-            {data.name.map((n: string, index: number) => (
-              <tr key={index}>
-                <td className="border-b dark:border-slate-700 p-4 pl-8">{n}</td>
-                <td className="border-b dark:border-slate-700 p-4 pl-8">{data.age[index]}</td>
-                {isCityVisible && (
-                  <motion.td
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: 100, opacity: 0 }}
-                    className="border-b dark:border-slate-700 p-4 pl-8"
-                  >
-                    {data.city[index]}
-                  </motion.td>
-                )}
+    <>
+      <nav className="container mx-auto px-4 py-2 nav-container">
+        <div className="logo-container">
+          <img src="https://placehold.co/50" alt="Placeholder image for the logo" className="w-12 h-12"/>
+          <span className="text-gray-700 text-sm">Logo</span>
+          <a href="https://github.com/somerepo" className="text-blue-500 text-sm github-link" target="_blank">Github: https://github.com/somerepo</a>
+        </div>
+        <ul className="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </nav>
+
+      <div className="container mx-auto px-4 py-2">
+        <div className="header">
+          <h1 className="text-2xl font-semibold" style={{ color: "#ff7f50" }}>高配当株 分析サイト</h1>
+        </div>
+        <div className="sub-header">
+          <p className="text-sm">アメリカ株式 専門</p><br />
+          <p className="text-sm">【集計条件】選定企業：S&P500より選定</p>
+          <p className="text-sm">除外対象1：BRK.BとBF.Bはデータがほぼないため除外</p>
+          <p className="text-sm">除外対象2：GOOG を採用し GOOGL は除外</p>
+          <p className="text-sm">配当利回り：3%以上9%以下を抽出</p>
+        </div>
+        <button className="toggle-switch" onClick={toggleData}>
+          {isDataExpanded ? "Hide Data" : "Show More Data"}
+        </button>
+        <div className="overflow-x-auto mt-6 table-shadow">
+          <table className="w-full text-sm text-left text-gray-500" id="data-table">
+            <thead className="table-header text-xs text-gray-700 uppercase">
+              <tr>
+                <th scope="col" className="px-6 py-3">Ticker</th>
+                <th scope="col" className="px-6 py-3">Company Name</th>
+                <th scope="col" className="px-6 py-3">Revenue & Market Dominance</th>
+                <th scope="col" className="px-6 py-3">Financial Health</th>
+                <th scope="col" className="px-6 py-3">Earning Power & Safety</th>
+                <th scope="col" className="px-6 py-3">Dividend Yield</th>
+                <th scope="col" className="px-6 py-3">Overall</th>
+                <th scope="col" className="px-6 py-3">Analyst Comment</th>
               </tr>
-            ))}
-          </tbody>
-        </AnimatePresence>
-      </table>
-    </main>
+            </thead>
+            <tbody>
+              <tr className="bg-white border-b">
+                <td className="px-6 py-4">XXXXXX</td>
+                <td className="px-6 py-4">XXXXXXXXXX</td>
+                <td className="px-6 py-4">Score</td>
+                <td className="px-6 py-4">Score</td>
+                <td className="px-6 py-4">Score</td>
+                <td className="px-6 py-4"><span className="score-pill">Score</span></td>
+                <td className="px-6 py-4">Score</td>
+                <td className="px-6 py-4"><span className="score-pill">Comment</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
   );
 }
