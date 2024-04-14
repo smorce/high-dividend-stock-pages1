@@ -62,28 +62,29 @@ table {
 .header h1 {
     font-size: 5rem;
 }
-.summary-container {
-    width: 100%; /* コンテナの幅設定 */
-}
 .summary-header {
-    position: relative; /* ツールチップの位置調整のために相対位置設定 */
-    margin-bottom: 20px; /* 下部に20pxの隙間を追加 */
-    cursor: pointer; /* ホバー時にカーソルをポインターに変更 */
+    position: relative;
+    display: inline-block;
 }
 .tooltip-content {
-    display: none; /* デフォルトでは非表示 */
-    position: absolute; /* 絶対位置指定 */
+    visibility: hidden;
+    width: 300px;
     background-color: #e2e4e0;
     color: #1C3B50;
-    border: 1px solid #ccc; /* 境界線 */
-    padding: 10px; /* 内側の余白 */
-    width: 200px; /* 幅の設定 */
-    left: 100%; /* 親要素から左に100%の位置に設定 */
-    top: 0; /* 上部からの位置 */
-    z-index: 1000; /* 他の要素より前面に表示 */
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -150px;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 .summary-header:hover .tooltip-content {
-    display: block; /* ホバー時に表示 */
+    visibility: visible;
+    opacity: 1;
 }
 .nav-links {
     display: flex;
