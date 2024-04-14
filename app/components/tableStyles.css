@@ -56,8 +56,8 @@ table {
 }
 .header {
     text-align: left;
-    margin-bottom: 3rem;
-    padding-top:   3rem;
+    margin-bottom: 1rem;
+    padding-top:   1rem;
 }
 .header h1 {
     font-size: 5rem;
@@ -69,7 +69,7 @@ table {
 }
 .tooltip-content {
     visibility: hidden;
-    width: 500px;
+    width: 400px;      /* 横幅 */
     background-color: #555;
     color: #fff;
     text-align: left;
