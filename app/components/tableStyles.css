@@ -122,7 +122,7 @@ table td, table th {
 }
 .summary-container .tooltip-content {
     visibility: hidden;
-    width: auto; /* または適切な最大幅に設定 */
+    /* width: auto; または適切な最大幅に設定 */
     max-width: 300px; /* 最大幅を超えないように設定 */
     background-color: #b9c7c2;
     color: #1C3B50;
