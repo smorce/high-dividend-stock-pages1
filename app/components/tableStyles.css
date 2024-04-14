@@ -3,6 +3,9 @@ body {
     background-color: #F9FAF7;
     color: #1C3B50;
 }
+table {
+    border-collapse: collapse;
+}
 .table-header {
     background-color: #F7FAFC;
 }
@@ -69,7 +72,7 @@ body {
     color: #1C3B50;
     text-align: left;
     border-radius: 6px;
-    padding: 8px;
+    padding: 10px;  /* paddingを少し増やしました */
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -78,10 +81,11 @@ body {
     margin-left: 8px;
     opacity: 0;
     transition: visibility 0s, opacity 0.3s linear;
-    max-width: 100%; /* ポップアップの最大横幅を要素の100%に設定 */
-    white-space: normal; /* テキストを自動的に折り返す */
+    max-width: 500px;  /* max-widthを増やしました */
+    font-size: 14px;  /* font-sizeを適切な値に調整する */
 }
 .summary-container .summary-header:hover .tooltip-content {
+    white-space: normal;
     visibility: visible;
     opacity: 1;
 }
