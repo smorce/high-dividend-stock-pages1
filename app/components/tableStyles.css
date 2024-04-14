@@ -67,8 +67,8 @@ table td, table th {
     padding-left:   0rem;
     margin-left:    0rem;
     
-    margin-top:     2rem;
-    padding-top:    2rem;
+    margin-top:     0rem;
+    padding-top:    0rem;
     
     margin-bottom:  0rem;
     padding-bottom: 0rem;
@@ -123,8 +123,8 @@ table td, table th {
 .summary-container .tooltip-content {
     visibility: hidden;
     width: auto;
-    max-width: 60px;
-    background-color: #F9FAF7;
+    max-width: 300px;
+    background-color: #d0d1cf;
     color: #1C3B50;
     text-align: left;
     border-radius: 6px;
@@ -139,6 +139,7 @@ table td, table th {
     transition: visibility 0s, opacity 0.3s linear;
 }
 .summary-container .summary-header:hover .tooltip-content {
+    white-space: normal; /* テキストを自動的に折り返す */
     visibility: visible;
     opacity: 1;
 }
