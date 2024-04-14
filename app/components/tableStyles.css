@@ -122,7 +122,7 @@ table td, table th {
 }
 .summary-container .tooltip-content {
     visibility: hidden;
-    width: auto;
+    /* width: auto; */
     background-color: #d0d1cf;
     color: #1C3B50;
     text-align: left;
