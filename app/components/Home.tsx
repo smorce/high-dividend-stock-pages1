@@ -1,4 +1,6 @@
 // client コンポーネント
+export const config = { runtime: 'client' }; // この行を追加
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
