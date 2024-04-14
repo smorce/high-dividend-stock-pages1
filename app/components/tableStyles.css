@@ -131,9 +131,10 @@ table td, table th {
     padding: 8px;
     position: absolute;
     z-index: 1;
-    bottom: 125%; /* ツールチップの位置を調整 */
-    left: 50%; /* ツールチップの中心を基点にする */
-    transform: translateX(-50%); /* 中心から左に50%移動して中央揃えに */
+    top: 50%; /* 要素の上から50%の位置 */
+    left: 100%; /* 要素の右側に */
+    transform: translateY(-50%); /* 中心から上に50%移動して中央揃えに */
+    margin-left: 8px; /* 親要素との間に少し間隔を持たせる */
     opacity: 0;
     transition: visibility 0s, opacity 0.3s linear;
 }
