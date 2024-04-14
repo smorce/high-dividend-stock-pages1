@@ -65,11 +65,11 @@ table {
 .summary-header {
     position: relative;
     display: inline-block;
-    margin-bottom: 30px;
+    margin-bottom: 40px;    /* 下に隙間をあける */
 }
 .tooltip-content {
     visibility: hidden;
-    width: 300px;
+    width: 500px;
     background-color: #555;
     color: #fff;
     text-align: left;
