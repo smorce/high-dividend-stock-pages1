@@ -22,7 +22,8 @@ table {
     margin: 15px auto;
     box-shadow: 0 1px 2px #7e8183e6;
     font-size: 18px;
-    border: 1px solid #ccc; /* 枠線を追加し、その太さを1pxに設定 */
+    border: 2px solid #ccc; /* 枠線を追加し、その太さを1pxに設定 */
+    margin-bottom: 10px;    /* 下に隙間をあける */
 }
 .toggle-container {
     display: flex;
@@ -78,7 +79,7 @@ table {
 .summary-header {
     position: relative;
     display: inline-block;
-    margin-bottom: 30px;    /* 下に隙間をあける */
+    margin-bottom: 10px;    /* 下に隙間をあける */
 }
 .tooltip-content {
     visibility: hidden;
