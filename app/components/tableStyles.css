@@ -10,7 +10,22 @@ body {
 }
 .right-content {
     padding-left: 20px; /* 左側の要素との間隔 */
-}  
+}
+.notification-icon {
+    width: 30px; /* アイコンの幅 */
+    height: 30px; /* アイコンの高さ */
+    background-color: red; /* 円の背景色 */
+    border-radius: 50%; /* 角を丸くして円を作成 */
+    color: white; /* テキストの色 */
+    font-weight: bold; /* フォントを太く */
+    font-size: 20px; /* テキストのサイズ */
+    
+    display: flex; /* Flexboxを使って中央揃えにする */
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    
+    text-align: center; /* テキストを中央揃え */
+}
 table {
     border-collapse: collapse;   /* テーブルのセルの間の隙間を埋める */
 }

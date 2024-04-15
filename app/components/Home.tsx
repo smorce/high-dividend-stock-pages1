@@ -71,7 +71,7 @@ export default function Home({ data }: HomeProps) {
             </span>
           </div>
           <div className="right-content">
-              集計条件
+            <div className="notification-icon">!</div>集計条件
           </div>
         </div>
 
