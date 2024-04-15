@@ -78,8 +78,9 @@ table {
     margin-bottom: 50px; /* 下に隙間を設定 */
 }
 .subtitle {
+    margin-top: 5px;
     color: #1C3B50;
-    font-size: 60px;
+    font-size: 40px;
 }
 .summary-header {
     position: relative;
