@@ -57,12 +57,12 @@ export default function Home({ data }: HomeProps) {
           <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
             <div className={`toggle-switch ${isDataExpanded ? 'active' : ''}`} onClick={toggleData}></div>
             <span className="toggle-text" id="toggleLabel" onClick={toggleData}>
-              {isDataExpanded ? "Show More Data" : "Show More Data"}
+              {isDataExpanded ? "詳細データの表示" : "詳細データの表示"}
             </span>
           </div>
           <div className="right-content">
             <span className="notification-icon">!</span>
-            <span className="summary-header" style={{ fontSize: '18px' }}>集計条件
+            <span className="summary-header" style={{ fontSize: '19px' }}>集計条件
               <div className="tooltip-content">
                 選定企業：S&P500より選定<br />
                 除外対象1：BRK.BとBF.Bはデータがほぼないため除外<br />
