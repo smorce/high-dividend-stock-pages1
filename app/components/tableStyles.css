@@ -75,7 +75,11 @@ table {
 }
 .header h1 {
     font-size: 5rem;
-    margin-bottom: 5px; /* 下に隙間を設定 */
+    margin-bottom: 50px; /* 下に隙間を設定 */
+}
+.subtitle {
+    color: #1C3B50;
+    font-size: 10px;
 }
 .summary-header {
     position: relative;
