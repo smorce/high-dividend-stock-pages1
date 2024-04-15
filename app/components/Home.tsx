@@ -104,7 +104,7 @@ export default function Home({ data }: HomeProps) {
                   <td className="px-6 py-4">Score</td>
                   <td className="px-6 py-4"><span className="score-pill">Score</span></td>
                   <td className="px-6 py-4">Score</td>
-                  <td className="px-6 py-4"><span className="score-pill">この企業は財務性は健全で収益性もあり、投資対象として魅力的な企業です。総合的にみて点数が高いです。</span></td>
+                  <td className="px-6 py-4"><span className="score-pill">この企業は、安定した財務基盤と高い収益性を示しており、配当利回りも高く安定しています。ただし、流動比率や自己資本比率に改善の余地があります。総合的に見て、将来的にも配当利回りを維持できると評価されます。</span></td>
                   {isDataExpanded && (
                     <motion.td
                       initial={{ x: -100, opacity: 0 }} // 左から登場
