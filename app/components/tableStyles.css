@@ -38,19 +38,6 @@ table {
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
-.button-3d {
-    background-color: white;
-    /* color: white; */
-    max-width: 250px;
-    border-radius: 4px;
-    text-align: center;
-    padding: 10px;
-    margin: 15px auto;
-    /* margin-bottom: 50px;    下に隙間をあける */
-    box-shadow: 0 1px 2px #7e8183e6;
-    font-size: 18px;
-    border: 2px solid #ccc; /* 枠線を追加し、その太さを1pxに設定 */
-}
 .toggle-container {
     display: flex;
     align-items: center;
@@ -115,7 +102,7 @@ table {
 }
 .tooltip-content {
     visibility: hidden;
-    width: 400px;      /* 横幅 */
+    width: 500px;      /* 横幅 */
     background-color: #555;
     color: #fff;
     text-align: left;

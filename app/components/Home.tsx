@@ -49,19 +49,10 @@ export default function Home({ data }: HomeProps) {
           </h1>
           <p className="text-sm subtitle">アメリカ株式 専門</p>
         </div>
-        <div className="summary-container">
-          <div className="summary-header">
-            <button className="button-3d">集計条件はこちら</button>
-            <div className="tooltip-content">
-              選定企業：S&P500より選定<br />
-              除外対象1：BRK.BとBF.Bはデータがほぼないため除外<br />
-              除外対象2：GOOG を採用し GOOGL は除外<br />
-              配当利回り：3%以上9%以下を抽出
-            </div>
-          </div>
-        </div>
+
         <br />
         <br />
+
         <div className="flex-container">
 
           <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
