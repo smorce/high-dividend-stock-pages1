@@ -12,22 +12,20 @@ body {
 .right-content {
     margin-left: 20px; /* 左側の要素との間隔 */
 }
-.notification-icon {
-    width: 28px; /* アイコンの幅 */
-    height: 28px; /* アイコンの高さ */
-    background-color: #ccc; /* 円の背景色 */
-    border-radius: 50%; /* 角を丸くして円を作成 */
-    color: white; /* テキストの色 */
-    font-weight: bold; /* フォントを太く */
-    font-size: 18px; /* テキストのサイズ */
-    
-    margin-right: 3px;
-    
-    display: inline-flex;
-    justify-content: center; /* 水平方向の中央揃え */
-    align-items: center; /* 垂直方向の中央揃え */
-    
-    text-align: center; /* テキストを中央揃え */
+.header {
+    text-align: left;
+    margin-bottom:  15px;
+    padding-top:    10px;
+    /* padding-bottom: 10px; */
+}
+.header h1 {
+    font-size: 5rem;
+    margin-bottom: 50px; /* 下に隙間を設定 */
+}
+.subtitle {
+    margin-top: 5px;
+    color: #1C3B50;
+    font-size: 40px;
 }
 table {
     border-collapse: collapse;   /* テーブルのセルの間の隙間を埋める */
@@ -80,20 +78,22 @@ table {
     margin-left: 8px;
     user-select: none;
 }
-.header {
-    text-align: left;
-    margin-bottom:  15px;
-    padding-top:    10px;
-    /* padding-bottom: 10px; */
-}
-.header h1 {
-    font-size: 5rem;
-    margin-bottom: 50px; /* 下に隙間を設定 */
-}
-.subtitle {
-    margin-top: 5px;
-    color: #1C3B50;
-    font-size: 40px;
+.notification-icon {
+    width: 28px; /* アイコンの幅 */
+    height: 28px; /* アイコンの高さ */
+    background-color: #ccc; /* 円の背景色 */
+    border-radius: 50%; /* 角を丸くして円を作成 */
+    color: white; /* テキストの色 */
+    font-weight: bold; /* フォントを太く */
+    font-size: 18px; /* テキストのサイズ */
+    
+    margin-right: 3px;
+    
+    display: inline-flex;
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    
+    text-align: center; /* テキストを中央揃え */
 }
 .summary-header {
     position: relative;
@@ -160,4 +160,8 @@ table {
     padding: 8px; /* セル内の余白を設定 */
     border-radius: 8px; /* 角の丸みを少し減らす */
     display: inline-block;
+}
+.space {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }

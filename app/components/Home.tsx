@@ -50,8 +50,7 @@ export default function Home({ data }: HomeProps) {
           <p className="text-sm subtitle">アメリカ株式 専門</p>
         </div>
 
-        <br />
-        <br />
+        <div style={{ marginTop: '16px', marginBottom: '16px' }}></div>   {/* 空白スペースを作るためだけのdiv */}
 
         <div className="flex-container">
 
