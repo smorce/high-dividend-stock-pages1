@@ -72,17 +72,14 @@ export default function Home({ data }: HomeProps) {
           </div>
           <div className="right-content">
             <span className="notification-icon">!</span>
-              <div className="summary-container">
-                <div className="summary-header">
-                  <span style={{ fontSize: '20px' }}>集計条件</span>
-                  <div className="tooltip-content">
-                    選定企業：S&P500より選定<br />
-                    除外対象1：BRK.BとBF.Bはデータがほぼないため除外<br />
-                    除外対象2：GOOG を採用し GOOGL は除外<br />
-                    配当利回り：3%以上9%以下を抽出
-                  </div>
-                </div>
+            <span className="summary-header" style={{ fontSize: '17px' }}>集計条件
+              <div className="tooltip-content">
+                選定企業：S&P500より選定<br />
+                除外対象1：BRK.BとBF.Bはデータがほぼないため除外<br />
+                除外対象2：GOOG を採用し GOOGL は除外<br />
+                配当利回り：3%以上9%以下を抽出
               </div>
+            </span>
           </div>
         </div>
 

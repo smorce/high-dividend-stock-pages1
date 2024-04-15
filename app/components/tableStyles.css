@@ -23,7 +23,7 @@ body {
     
     margin-right: 3px;
     
-    display: inline-flex; /* Flexboxを使って中央揃えにする */
+    display: inline-flex;
     justify-content: center; /* 水平方向の中央揃え */
     align-items: center; /* 垂直方向の中央揃え */
     
