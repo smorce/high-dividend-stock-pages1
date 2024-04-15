@@ -6,10 +6,11 @@ body {
 .flex-container {
     display: flex;
     align-items: center; /* コンテンツを垂直方向に中央揃えにする */
-    justify-content: space-between; /* コンテンツ間にスペースを均等に配置 */
+    /* justify-content: space-between; コンテンツ間にスペースを均等に配置 */
+    justify-content: flex-start; /* 左揃えに変更 */
 }
 .right-content {
-    padding-left: 20px; /* 左側の要素との間隔 */
+    margin-left: 20px; /* 左側の要素との間隔 */
 }
 .notification-icon {
     width: 30px; /* アイコンの幅 */
