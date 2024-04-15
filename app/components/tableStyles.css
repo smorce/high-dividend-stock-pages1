@@ -13,7 +13,7 @@ table {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 .button-3d {
-    /* background-color: #00D1D6; */
+    background-color: white;
     /* color: white; */
     max-width: 250px;
     border-radius: 4px;

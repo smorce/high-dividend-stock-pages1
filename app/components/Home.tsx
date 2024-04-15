@@ -84,7 +84,7 @@ export default function Home({ data }: HomeProps) {
                 <th scope="col" className="px-6 py-3">Earning Power & Safety</th>
                 <th scope="col" className="px-6 py-3">Dividend Yield</th>
                 <th scope="col" className="px-6 py-3">Overall</th>
-                <th scope="col" className="px-6 py-3">Analyst Comment</th>
+                <th scope="col" className="px-6 py-3">AIによる総評</th>
                 {isDataExpanded && (
                   <motion.th
                     initial={{ x: -100, opacity: 0 }} // 左から登場
@@ -109,7 +109,7 @@ export default function Home({ data }: HomeProps) {
                   <td className="px-6 py-4">Score</td>
                   <td className="px-6 py-4"><span className="score-pill">Score</span></td>
                   <td className="px-6 py-4">Score</td>
-                  <td className="px-6 py-4"><span className="score-pill">Comment</span></td>
+                  <td className="px-6 py-4"><span className="score-pill">この企業は財務性は健全で収益性もあり、投資対象として魅力的な企業です。総合的にみて点数が高いです。</span></td>
                   {isDataExpanded && (
                     <motion.td
                       initial={{ x: -100, opacity: 0 }} // 左から登場
