@@ -75,6 +75,7 @@ table {
 }
 .header h1 {
     font-size: 5rem;
+    margin-bottom: 5px; /* 下に隙間を設定 */
 }
 .summary-header {
     position: relative;

@@ -46,8 +46,8 @@ export default function Home({ data }: HomeProps) {
         <div className="header">
           <h1 className="text-2xl font-semibold">
             <span style={{ color: "#ff7f50" }}>高配当</span>株 分析サイト
-            <p className="text-sm">アメリカ株式 専門</p><br />
           </h1>
+          <p className="text-sm subtitle">アメリカ株式 専門</p>
         </div>
         {/* <div className="sub-header">
           <p className="text-sm">アメリカ株式 専門</p><br />
