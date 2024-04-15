@@ -74,7 +74,7 @@ export default function Home({ data }: HomeProps) {
             <span className="notification-icon">!</span>
               <div className="summary-container">
                 <div className="summary-header">
-                  <button className="button-3d"><span style={{ fontSize: '20px' }}>集計条件</span></button>
+                  <span style={{ fontSize: '20px' }}>集計条件</span>
                   <div className="tooltip-content">
                     選定企業：S&P500より選定<br />
                     除外対象1：BRK.BとBF.Bはデータがほぼないため除外<br />
