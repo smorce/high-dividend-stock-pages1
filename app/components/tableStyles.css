@@ -161,7 +161,3 @@ table {
     border-radius: 8px; /* 角の丸みを少し減らす */
     display: inline-block;
 }
-.space {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
