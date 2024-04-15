@@ -18,12 +18,12 @@ table {
     max-width: 250px;
     border-radius: 4px;
     text-align: center;
-    padding: 10px;
-    margin: 15px auto;
+    /* padding: 10px;
+    margin: 15px auto; */
+    margin-bottom: 10px;    /* 下に隙間をあける */
     box-shadow: 0 1px 2px #7e8183e6;
     font-size: 18px;
     border: 2px solid #ccc; /* 枠線を追加し、その太さを1pxに設定 */
-    margin-bottom: 10px;    /* 下に隙間をあける */
 }
 .toggle-container {
     display: flex;
@@ -139,6 +139,6 @@ table {
 .score-pill {
     background-color: #E2E8F0;
     padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
+    border-radius: 30px; /* 角の丸みを少し減らす */
     display: inline-block;
 }
