@@ -62,7 +62,6 @@ export default function Home({ data }: HomeProps) {
         </div>
         <br />
         <br />
-        <br />
         <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
           <div className={`toggle-switch ${isDataExpanded ? 'active' : ''}`} onClick={toggleData}></div>
           <span className="toggle-text" id="toggleLabel" onClick={toggleData}>
