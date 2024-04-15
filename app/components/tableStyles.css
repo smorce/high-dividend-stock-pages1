@@ -3,6 +3,14 @@ body {
     background-color: #F9FAF7;
     color: #1C3B50;
 }
+.flex-container {
+    display: flex;
+    align-items: center; /* コンテンツを垂直方向に中央揃えにする */
+    justify-content: space-between; /* コンテンツ間にスペースを均等に配置 */
+}
+.right-content {
+    padding-left: 20px; /* 左側の要素との間隔 */
+}  
 table {
     border-collapse: collapse;   /* テーブルのセルの間の隙間を埋める */
 }
