@@ -1,4 +1,4 @@
-// ★KVバリューを使う
+// ★KVバリューを使う。あとは横スクロールバーの追加
 // client コンポーネント
 "use client";  // この行を追加
 
@@ -41,8 +41,8 @@ export default function Home({ data }: HomeProps) {
           <li><a href="#">Twitter</a></li>
         </ul>
       </nav>
-      
-      <div className="container mx-auto px-4 py-2 flex-container">
+
+      <div className="container mx-auto px-4 py-2">
         <div className="header">
           <h1 className="text-2xl font-semibold">
             <span style={{ color: "#ff7f50" }}>高配当</span>株 分析サイト
@@ -62,15 +62,20 @@ export default function Home({ data }: HomeProps) {
         </div>
         <br />
         <br />
-        <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
-          <div className={`toggle-switch ${isDataExpanded ? 'active' : ''}`} onClick={toggleData}></div>
-          <span className="toggle-text" id="toggleLabel" onClick={toggleData}>
-            {isDataExpanded ? "Show More Data" : "Show More Data"}
-          </span>
+        <div className="flex-container">
+
+          <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
+            <div className={`toggle-switch ${isDataExpanded ? 'active' : ''}`} onClick={toggleData}></div>
+            <span className="toggle-text" id="toggleLabel" onClick={toggleData}>
+              {isDataExpanded ? "Show More Data" : "Show More Data"}
+            </span>
+          </div>
+          <div className="right-content">
+              集計条件
+          </div>
         </div>
-        <div className="right-content">
-            集計条件
-        </div>
+
+
         <div className="overflow-x-auto mt-6 table-shadow">
           <table className="w-full text-sm text-left text-gray-500" id="data-table">
             <thead className="table-header text-xs text-gray-700 uppercase">
