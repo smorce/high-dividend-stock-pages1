@@ -49,14 +49,6 @@ export default function Home({ data }: HomeProps) {
           </h1>
           <p className="text-sm subtitle">アメリカ株式 専門</p>
         </div>
-        {/* <div className="sub-header">
-          <p className="text-sm">アメリカ株式 専門</p><br />
-          <p className="text-sm">【集計条件】</p>
-          <p className="text-sm">　選定企業：S&P500より選定</p>
-          <p className="text-sm">　除外対象1：BRK.BとBF.Bはデータがほぼないため除外</p>
-          <p className="text-sm">　除外対象2：GOOG を採用し GOOGL は除外</p>
-          <p className="text-sm">　配当利回り：3%以上9%以下を抽出</p>
-        </div> */}
         <div className="summary-container">
           <div className="summary-header">
             <button className="button-3d">集計条件はこちら</button>
@@ -68,6 +60,9 @@ export default function Home({ data }: HomeProps) {
             </div>
           </div>
         </div>
+        <br />
+        <br />
+        <br />
         <div className="toggle-container py-2" style={{ width: 'fit-content' }}>
           <div className={`toggle-switch ${isDataExpanded ? 'active' : ''}`} onClick={toggleData}></div>
           <span className="toggle-text" id="toggleLabel" onClick={toggleData}>
