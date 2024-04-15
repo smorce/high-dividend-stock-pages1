@@ -71,7 +71,7 @@ table {
     text-align: left;
     margin-bottom:  15px;
     padding-top:    10px;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 .header h1 {
     font-size: 5rem;
@@ -79,7 +79,7 @@ table {
 .summary-header {
     position: relative;
     display: inline-block;
-    margin-bottom: 10px;    /* 下に隙間をあける */
+    margin-bottom: 20px;    /* 下に隙間をあける */
 }
 .tooltip-content {
     visibility: hidden;
