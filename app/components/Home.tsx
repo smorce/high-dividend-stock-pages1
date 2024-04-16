@@ -1,6 +1,7 @@
 // ★KVバリューを使う。あとは横スクロールバーの追加。表のソート機能。ヘッダー。
 // minWidth: '1200px' の調整
 // AnimatePresence の位置が変わったか大丈夫か？
+// GitHub Actions のデータ件数を5件に絞っているので解除する
 // client コンポーネント
 "use client";  // この行を追加
 
@@ -91,6 +92,8 @@ export default function Home({ data }: HomeProps) {
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
   };
+
+  console.log(data)
 
   return (
     <>
