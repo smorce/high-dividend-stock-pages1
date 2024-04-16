@@ -120,6 +120,7 @@ export default function Home({ data }: HomeProps) {
                 <th scope="col" className="px-6 py-3">財務の健全性</th>
                 <th scope="col" className="px-6 py-3">稼ぐ力と安全性</th>
                 <th scope="col" className="px-6 py-3">配当実績と支払い能力</th>
+                <th scope="col" className="px-6 py-3">総合得点(5点満点)</th>
                 <th scope="col" className="px-6 py-3">AIによる総評</th>
                 {isDataExpanded && (
                   <>
@@ -159,6 +160,17 @@ export default function Home({ data }: HomeProps) {
                   <td className="px-6 py-4">{Number(item['財務の健全性']).toFixed(2)}</td>
                   <td className="px-6 py-4">{Number(item['稼ぐ力と安全性']).toFixed(2)}</td>
                   <td className="px-6 py-4">{Number(item['配当実績と支払い能力']).toFixed(2)}</td>
+                  {/* 総合得点カラム */}
+                  <td className="px-6 py-4">
+                    {(
+                      (
+                        item['収益と市場優位性'] +
+                        item['財務の健全性'] +
+                        item['稼ぐ力と安全性'] +
+                        item['配当実績と支払い能力']
+                      ) / 4
+                    ).toFixed(2)}
+                  </td>
                   <td className="px-6 py-4"><span className="score-pill">{item['AIによる総評']}</span></td>
                   {isDataExpanded && [
                     '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
