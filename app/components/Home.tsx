@@ -120,7 +120,7 @@ export default function Home({ data }: HomeProps) {
                 <th scope="col" className="px-6 py-3">財務の健全性</th>
                 <th scope="col" className="px-6 py-3">稼ぐ力と安全性</th>
                 <th scope="col" className="px-6 py-3">配当実績と支払い能力</th>
-                <th scope="col" className="px-6 py-3">総合得点(5点満点)</th>
+                <th scope="col" className="px-6 py-3">総合得点(5点)</th>
                 <th scope="col" className="px-6 py-3">AIによる総評</th>
                 {isDataExpanded && (
                   <>
