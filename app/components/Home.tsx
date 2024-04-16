@@ -1,4 +1,6 @@
-// ★KVバリューを使う。あとは横スクロールバーの追加。表のソート機能。
+// ★KVバリューを使う。あとは横スクロールバーの追加。表のソート機能。ヘッダー。
+// minWidth: '1200px' の調整
+// AnimatePresence の位置が変わったか大丈夫か？
 // client コンポーネント
 "use client";  // この行を追加
 
@@ -9,14 +11,77 @@ import './tableStyles.css';
 // useClient();
 
 // 型定義
+// interface DataProps {
+//   'ティッカー': string[];
+//   '企業名': string[];
+//   '収益と市場優位性': number[];
+//   '財務の健全性': number[];
+//   '稼ぐ力と安全性': number[];
+//   '配当実績と支払い能力': number[];
+//   '連続増配年数': number[];
+//   '配当利回り': number[];
+//   'AIによる総評': string[];
+//   '発行済株式数': number[];
+//   '株価': number[];
+//   '配当貴族フラグ': number[];
+//   '時価総額': number[];
+//   '1株当りの配当金': number[];
+//   '次回配当金の権利確定日': string[];
+//   '配当性向': number[];
+//   '過去5年間の平均配当利回り': number[];
+//   '売上高': number[];
+//   '利益余剰金': number[];
+//   '株主資本(純資産, 自己資本)': number[];
+//   '総資産': number[];
+//   '純有利子負債': number[];
+//   'フリーキャッシュフロー': number[];
+//   '営業キャッシュフロー': number[];
+//   '財務キャッシュフロー': number[];
+//   '投資キャッシュフロー': number[];
+//   '現金及び現金同等物': number[];
+//   '営業利益率': number[];
+//   '流動比率': number[];
+//   '自己資本比率': number[];
+//   '営業キャッシュフローマージン': number[];
+// }
+
 interface DataProps {
-  name: string[];
-  age:  string[];   // number
-  city: string[];
+  'ティッカー': string;
+  '企業名': string;
+  '収益と市場優位性': number;
+  '財務の健全性': number;
+  '稼ぐ力と安全性': number;
+  '配当実績と支払い能力': number;
+  '連続増配年数': number;
+  '配当利回り': number;
+  'AIによる総評': string;
+  '発行済株式数': number;
+  '株価': number;
+  '配当貴族フラグ': number;
+  '時価総額': number;
+  '1株当りの配当金': number;
+  '次回配当金の権利確定日': string;
+  '配当性向': number;
+  '過去5年間の平均配当利回り': number;
+  '売上高': number;
+  '利益余剰金': number;
+  '株主資本(純資産, 自己資本)': number;
+  '総資産': number;
+  '純有利子負債': number;
+  'フリーキャッシュフロー': number;
+  '営業キャッシュフロー': number;
+  '財務キャッシュフロー': number;
+  '投資キャッシュフロー': number;
+  '現金及び現金同等物': number;
+  '営業利益率': number;
+  '流動比率': number;
+  '自己資本比率': number;
+  '営業キャッシュフローマージン': number;
+  [key: string]: string | number;  // インデックスシグネチャの追加。動的なプロパティアクセスにはインデックスシグネチャが必要なため、使用する全てのデータ型をココで定義する
 }
 
 interface HomeProps {
-  data: DataProps;
+  data: DataProps[];
 }
 
 // export default async function Home({ data }: HomeProps) {
@@ -73,58 +138,79 @@ export default function Home({ data }: HomeProps) {
           </div>
         </div>
 
-
-        <div className="overflow-x-auto mt-6 table-shadow">
-          <table className="w-full text-sm text-left text-gray-500" id="data-table">
+        <div className="overflow-x-auto mt-6 table-shadow" style={{ maxWidth: '100%' }}>   {/* overflow-x: auto;スタイルを適用します。これにより、内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */}
+          <table className="w-full text-sm text-left text-gray-500" id="data-table" style={{ minWidth: '1200px' }}>   {/* テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
             <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>
-                <th scope="col" className="px-6 py-3">Ticker</th>
-                <th scope="col" className="px-6 py-3">Company Name</th>
-                <th scope="col" className="px-6 py-3">Revenue & Market Dominance</th>
-                <th scope="col" className="px-6 py-3">Financial Health</th>
-                <th scope="col" className="px-6 py-3">Earning Power & Safety</th>
-                <th scope="col" className="px-6 py-3">Dividend Yield</th>
-                <th scope="col" className="px-6 py-3">Overall</th>
+                <th scope="col" className="px-6 py-3">ティッカー</th>
+                <th scope="col" className="px-6 py-3">企業名</th>
+                <th scope="col" className="px-6 py-3">収益と市場優位性</th>
+                <th scope="col" className="px-6 py-3">財務の健全性</th>
+                <th scope="col" className="px-6 py-3">稼ぐ力と安全性</th>
+                <th scope="col" className="px-6 py-3">配当実績と支払い能力</th>
+                <th scope="col" className="px-6 py-3">連続増配年数</th>
+                <th scope="col" className="px-6 py-3">配当利回り</th>
                 <th scope="col" className="px-6 py-3">AIによる総評</th>
                 {isDataExpanded && (
-                  <motion.th
-                    initial={{ x: -100, opacity: 0 }} // 左から登場
-                    animate={{ x: 0, opacity: 1 }}    // 中央へ移動し、完全に表示
-                    exit={{ x: 100, opacity: 0 }}    // 右から左へのアニメーション？ できてないけど一旦OK
-                    transition={{ duration: 0.2 }}    // アニメーションの時間はN秒
-                    scope="col"
-                    className="px-6 py-3"
-                  >
-                    ニューカラム
-                  </motion.th>
+                  <>
+                    <AnimatePresence>
+                      {[
+                        '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
+                        '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
+                        '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー',
+                        '投資キャッシュフロー', '現金及び現金同等物', '営業利益率', '流動比率', '自己資本比率',
+                        '営業キャッシュフローマージン'
+                      ].map(col => (
+                        <motion.th
+                          key={col}
+                          initial={{ x: -100, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: 100, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          scope="col"
+                          className="px-6 py-3"
+                        >
+                          {col}
+                        </motion.th>
+                      ))}
+                    </AnimatePresence>
+                  </>
                 )}
               </tr>
             </thead>
-            <AnimatePresence>
-              <tbody>
-                <tr className="bg-white border-b">
-                  <td className="px-6 py-4">XXXXXX</td>
-                  <td className="px-6 py-4">XXXXXXXXXX</td>
-                  <td className="px-6 py-4">Score</td>
-                  <td className="px-6 py-4">Score</td>
-                  <td className="px-6 py-4">Score</td>
-                  <td className="px-6 py-4"><span className="score-pill">Score</span></td>
-                  <td className="px-6 py-4">Score</td>
-                  <td className="px-6 py-4"><span className="score-pill">この企業は、安定した財務基盤と高い収益性を示しており、配当利回りも高く安定しています。ただし、流動比率や自己資本比率に改善の余地があります。総合的に見て、将来的にも配当利回りを維持できると評価されます。</span></td>
-                  {isDataExpanded && (
+            <tbody>
+              {data.map((item: DataProps, index: number) => (
+                <tr key={index} className="bg-white border-b">
+                  <td className="px-6 py-4">{item['ティッカー']}</td>
+                  <td className="px-6 py-4">{item['企業名']}</td>
+                  <td className="px-6 py-4">{item['収益と市場優位性']}</td>
+                  <td className="px-6 py-4">{item['財務の健全性']}</td>
+                  <td className="px-6 py-4">{item['稼ぐ力と安全性']}</td>
+                  <td className="px-6 py-4">{item['配当実績と支払い能力']}</td>
+                  <td className="px-6 py-4">{item['連続増配年数']}</td>
+                  <td className="px-6 py-4">{item['配当利回り']}</td>
+                  <td className="px-6 py-4">{item['AIによる総評']}</td>
+                  {isDataExpanded && [
+                    '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
+                    '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
+                    '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー',
+                    '投資キャッシュフロー', '現金及び現金同等物', '営業利益率', '流動比率', '自己資本比率',
+                    '営業キャッシュフローマージン'
+                  ].map(col => (
                     <motion.td
-                      initial={{ x: -100, opacity: 0 }} // 左から登場
-                      animate={{ x: 0, opacity: 1 }}    // 中央へ移動し、完全に表示
-                      exit={{ x: 100, opacity: 0 }}    // 右から左へのアニメーション？ できてないけど一旦OK
-                      transition={{ duration: 0.2 }}    // アニメーションの時間はN秒
+                      key={col}
+                      initial={{ x: -100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 100, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
                       className="px-6 py-4"
                     >
-                      ニューカラムの値
+                      {item[col]}
                     </motion.td>
-                  )}
+                  ))}
                 </tr>
-              </tbody>
-            </AnimatePresence>
+              ))}
+            </tbody>
           </table>
         </div>
       </div>
