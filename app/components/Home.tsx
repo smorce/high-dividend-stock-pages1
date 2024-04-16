@@ -12,84 +12,63 @@ import './tableStyles.css';
 // useClient();
 
 // 型定義
-interface DataProps {
-  'ティッカー': string[];
-  '企業名': string[];
-  '収益と市場優位性': number[];
-  '財務の健全性': number[];
-  '稼ぐ力と安全性': number[];
-  '配当実績と支払い能力': number[];
-  '連続増配年数': number[];
-  '配当利回り': number[];
-  'AIによる総評': string[];
-  '発行済株式数': number[];
-  '株価': number[];
-  '配当貴族フラグ': number[];
-  '時価総額': number[];
-  '1株当りの配当金': number[];
-  '次回配当金の権利確定日': string[];
-  '配当性向': number[];
-  '過去5年間の平均配当利回り': number[];
-  '売上高': number[];
-  '利益余剰金': number[];
-  '株主資本(純資産, 自己資本)': number[];
-  '総資産': number[];
-  '純有利子負債': number[];
-  'フリーキャッシュフロー': number[];
-  '営業キャッシュフロー': number[];
-  '財務キャッシュフロー': number[];
-  '投資キャッシュフロー': number[];
-  '現金及び現金同等物': number[];
-  '営業利益率': number[];
-  '流動比率': number[];
-  '自己資本比率': number[];
-  '営業キャッシュフローマージン': number[];
-  [key: string]: number[] | string[];  // DataProps インターフェースの任意のプロパティに対して number[]、string[] の値を許容するようになります。
+interface DataItem {
+  'ティッカー': string;
+  '企業名': string;
+  '収益と市場優位性': number;
+  '財務の健全性': number;
+  '稼ぐ力と安全性': number;
+  '配当実績と支払い能力': number;
+  '連続増配年数': number;
+  '配当利回り': number;
+  'AIによる総評': string;
+  '発行済株式数': number;
+  '株価': number;
+  '配当貴族フラグ': number;
+  '時価総額': number;
+  '1株当りの配当金': number;
+  '次回配当金の権利確定日': string;
+  '配当性向': number;
+  '過去5年間の平均配当利回り': number;
+  '売上高': number;
+  '利益余剰金': number;
+  '株主資本(純資産, 自己資本)': number;
+  '総資産': number;
+  '純有利子負債': number;
+  'フリーキャッシュフロー': number;
+  '営業キャッシュフロー': number;
+  '財務キャッシュフロー': number;
+  '投資キャッシュフロー': number;
+  '現金及び現金同等物': number;
+  '営業利益率': number;
+  '流動比率': number;
+  '自己資本比率': number;
+  '営業キャッシュフローマージン': number;
+  [key: string]: string | number;  // インデックスシグネチャの追加。動的なプロパティアクセスにはインデックスシグネチャが必要なため、使用する全てのデータ型をココで定義する
 }
-
-// 全部結合されちゃう。実際には各データは配列なのでこれは間違い
-// interface DataProps {
-//   'ティッカー': string;
-//   '企業名': string;
-//   '収益と市場優位性': number;
-//   '財務の健全性': number;
-//   '稼ぐ力と安全性': number;
-//   '配当実績と支払い能力': number;
-//   '連続増配年数': number;
-//   '配当利回り': number;
-//   'AIによる総評': string;
-//   '発行済株式数': number;
-//   '株価': number;
-//   '配当貴族フラグ': number;
-//   '時価総額': number;
-//   '1株当りの配当金': number;
-//   '次回配当金の権利確定日': string;
-//   '配当性向': number;
-//   '過去5年間の平均配当利回り': number;
-//   '売上高': number;
-//   '利益余剰金': number;
-//   '株主資本(純資産, 自己資本)': number;
-//   '総資産': number;
-//   '純有利子負債': number;
-//   'フリーキャッシュフロー': number;
-//   '営業キャッシュフロー': number;
-//   '財務キャッシュフロー': number;
-//   '投資キャッシュフロー': number;
-//   '現金及び現金同等物': number;
-//   '営業利益率': number;
-//   '流動比率': number;
-//   '自己資本比率': number;
-//   '営業キャッシュフローマージン': number;
-//   [key: string]: string | number;  // インデックスシグネチャの追加。動的なプロパティアクセスにはインデックスシグネチャが必要なため、使用する全てのデータ型をココで定義する
-// }
 
 interface HomeProps {
-  data: DataProps[];
+  data: DataItem[];
 }
+
+// 各行に展開するためにデータ構造を変換する
+const convertData = (data: any[]): DataItem[] => {
+  if (!data[0]) return [];
+
+  const keys = Object.keys(data[0]);
+  return data[0][keys[0]].map((_: string, i: number) =>
+    keys.reduce((obj, key) => {
+      obj[key] = data[0][key][i];
+      return obj;
+    }, {} as DataItem)
+  );
+};
 
 // export default async function Home({ data }: HomeProps) {
 export default function Home({ data }: HomeProps) {
   const [isDataExpanded, setIsDataExpanded] = useState(false);
+  // const convertedData = convertData(data);　　　★★★
+  const convertedData = data;
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
@@ -182,17 +161,17 @@ export default function Home({ data }: HomeProps) {
               </tr>
             </thead>
             <tbody>
-              {data.map((item: DataProps, index: number) => (
+              {convertedData.map((item: DataItem, index: number) => (
                 <tr key={index} className="bg-white border-b">
-                  <td className="px-6 py-4">{item['ティッカー'][index]}</td>
-                  <td className="px-6 py-4">{item['企業名'][index]}</td>
-                  <td className="px-6 py-4">{item['収益と市場優位性'][index]}</td>
-                  <td className="px-6 py-4">{item['財務の健全性'][index]}</td>
-                  <td className="px-6 py-4">{item['稼ぐ力と安全性'][index]}</td>
-                  <td className="px-6 py-4">{item['配当実績と支払い能力'][index]}</td>
-                  <td className="px-6 py-4">{item['連続増配年数'][index]}</td>
-                  <td className="px-6 py-4">{item['配当利回り'][index]}</td>
-                  <td className="px-6 py-4">{item['AIによる総評'][index]}</td>
+                  <td className="px-6 py-4">{item['ティッカー']}</td>
+                  <td className="px-6 py-4">{item['企業名']}</td>
+                  <td className="px-6 py-4">{item['収益と市場優位性']}</td>
+                  <td className="px-6 py-4">{item['財務の健全性']}</td>
+                  <td className="px-6 py-4">{item['稼ぐ力と安全性']}</td>
+                  <td className="px-6 py-4">{item['配当実績と支払い能力']}</td>
+                  <td className="px-6 py-4">{item['連続増配年数']}</td>
+                  <td className="px-6 py-4">{item['配当利回り']}</td>
+                  <td className="px-6 py-4">{item['AIによる総評']}</td>
                   {isDataExpanded && [
                     '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
                     '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
@@ -208,7 +187,7 @@ export default function Home({ data }: HomeProps) {
                       transition={{ duration: 0.2 }}
                       className="px-6 py-4"
                     >
-                      {item[col][index]}
+                      {item[col] ?? '-'}
                     </motion.td>
                   ))}
                 </tr>
