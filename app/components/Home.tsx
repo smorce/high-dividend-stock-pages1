@@ -44,7 +44,7 @@ interface DataProps {
   '流動比率': number[];
   '自己資本比率': number[];
   '営業キャッシュフローマージン': number[];
-  [key: string]: number[] | string[] | undefined;  // DataProps インターフェースの任意のプロパティに対して number[]、string[]、または undefined の値を許容するようになります。
+  [key: string]: number[] | string[];  // DataProps インターフェースの任意のプロパティに対して number[]、string[] の値を許容するようになります。
 }
 
 // 全部結合されちゃう。実際には各データは配列なのでこれは間違い
@@ -93,16 +93,6 @@ export default function Home({ data }: HomeProps) {
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
-  };
-
-  // TypeScriptでは、undefinedの値を期待しない場合にエラーが発生するため、undefinedでない場合のみ処理を行うようにrenderCell関数を作成する
-  // renderCellという新しい関数を導入しています。この関数は、渡された値がundefinedでない場合のみ値を表示し、undefinedの場合は空文字列を返します。
-  // このrenderCell関数を使用することで、undefinedの値を適切に処理できるようになります。
-  const renderCell = (col: number[] | string[] | undefined, index: number) => {
-    if (col !== undefined && col[index] !== undefined) {
-      return col[index];
-    }
-    return '';
   };
 
   return (
@@ -218,7 +208,7 @@ export default function Home({ data }: HomeProps) {
                       transition={{ duration: 0.2 }}
                       className="px-6 py-4"
                     >
-                      {renderCell(item[col][index], index)}
+                      {item[col][index]}
                     </motion.td>
                   ))}
                 </tr>

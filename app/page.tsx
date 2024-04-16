@@ -36,7 +36,7 @@ interface DataProps {
   '流動比率': number[];
   '自己資本比率': number[];
   '営業キャッシュフローマージン': number[];
-  [key: string]: number[] | string[] | undefined;  // DataProps インターフェースの任意のプロパティに対して number[]、string[]、または undefined の値を許容するようになります。
+  [key: string]: number[] | string[];  // DataProps インターフェースの任意のプロパティに対して number[]、string[] の値を許容するようになります。
 }
 
 // 全部結合されちゃう。実際には各データは配列なのでこれは間違い
