@@ -164,10 +164,10 @@ export default function Home({ data }: HomeProps) {
                   <td className="px-6 py-4">
                     {(
                       (
-                        item['収益と市場優位性'] +
-                        item['財務の健全性'] +
-                        item['稼ぐ力と安全性'] +
-                        item['配当実績と支払い能力']
+                        Number(item['収益と市場優位性']) +
+                        Number(item['財務の健全性']) +
+                        Number(item['稼ぐ力と安全性']) +
+                        Number(item['配当実績と支払い能力'])
                       ) / 4
                     ).toFixed(2)}
                   </td>
