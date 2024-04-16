@@ -12,74 +12,76 @@ import './tableStyles.css';
 // useClient();
 
 // 型定義
-// interface DataProps {
-//   'ティッカー': string[];
-//   '企業名': string[];
-//   '収益と市場優位性': number[];
-//   '財務の健全性': number[];
-//   '稼ぐ力と安全性': number[];
-//   '配当実績と支払い能力': number[];
-//   '連続増配年数': number[];
-//   '配当利回り': number[];
-//   'AIによる総評': string[];
-//   '発行済株式数': number[];
-//   '株価': number[];
-//   '配当貴族フラグ': number[];
-//   '時価総額': number[];
-//   '1株当りの配当金': number[];
-//   '次回配当金の権利確定日': string[];
-//   '配当性向': number[];
-//   '過去5年間の平均配当利回り': number[];
-//   '売上高': number[];
-//   '利益余剰金': number[];
-//   '株主資本(純資産, 自己資本)': number[];
-//   '総資産': number[];
-//   '純有利子負債': number[];
-//   'フリーキャッシュフロー': number[];
-//   '営業キャッシュフロー': number[];
-//   '財務キャッシュフロー': number[];
-//   '投資キャッシュフロー': number[];
-//   '現金及び現金同等物': number[];
-//   '営業利益率': number[];
-//   '流動比率': number[];
-//   '自己資本比率': number[];
-//   '営業キャッシュフローマージン': number[];
-// }
-
 interface DataProps {
-  'ティッカー': string;
-  '企業名': string;
-  '収益と市場優位性': number;
-  '財務の健全性': number;
-  '稼ぐ力と安全性': number;
-  '配当実績と支払い能力': number;
-  '連続増配年数': number;
-  '配当利回り': number;
-  'AIによる総評': string;
-  '発行済株式数': number;
-  '株価': number;
-  '配当貴族フラグ': number;
-  '時価総額': number;
-  '1株当りの配当金': number;
-  '次回配当金の権利確定日': string;
-  '配当性向': number;
-  '過去5年間の平均配当利回り': number;
-  '売上高': number;
-  '利益余剰金': number;
-  '株主資本(純資産, 自己資本)': number;
-  '総資産': number;
-  '純有利子負債': number;
-  'フリーキャッシュフロー': number;
-  '営業キャッシュフロー': number;
-  '財務キャッシュフロー': number;
-  '投資キャッシュフロー': number;
-  '現金及び現金同等物': number;
-  '営業利益率': number;
-  '流動比率': number;
-  '自己資本比率': number;
-  '営業キャッシュフローマージン': number;
-  [key: string]: string | number;  // インデックスシグネチャの追加。動的なプロパティアクセスにはインデックスシグネチャが必要なため、使用する全てのデータ型をココで定義する
+  'ティッカー': string[];
+  '企業名': string[];
+  '収益と市場優位性': number[];
+  '財務の健全性': number[];
+  '稼ぐ力と安全性': number[];
+  '配当実績と支払い能力': number[];
+  '連続増配年数': number[];
+  '配当利回り': number[];
+  'AIによる総評': string[];
+  '発行済株式数': number[];
+  '株価': number[];
+  '配当貴族フラグ': number[];
+  '時価総額': number[];
+  '1株当りの配当金': number[];
+  '次回配当金の権利確定日': string[];
+  '配当性向': number[];
+  '過去5年間の平均配当利回り': number[];
+  '売上高': number[];
+  '利益余剰金': number[];
+  '株主資本(純資産, 自己資本)': number[];
+  '総資産': number[];
+  '純有利子負債': number[];
+  'フリーキャッシュフロー': number[];
+  '営業キャッシュフロー': number[];
+  '財務キャッシュフロー': number[];
+  '投資キャッシュフロー': number[];
+  '現金及び現金同等物': number[];
+  '営業利益率': number[];
+  '流動比率': number[];
+  '自己資本比率': number[];
+  '営業キャッシュフローマージン': number[];
+  [key: string]: number[] | string[] | undefined;  // DataProps インターフェースの任意のプロパティに対して number[]、string[]、または undefined の値を許容するようになります。
 }
+
+// 全部結合されちゃう。実際には各データは配列なのでこれは間違い
+// interface DataProps {
+//   'ティッカー': string;
+//   '企業名': string;
+//   '収益と市場優位性': number;
+//   '財務の健全性': number;
+//   '稼ぐ力と安全性': number;
+//   '配当実績と支払い能力': number;
+//   '連続増配年数': number;
+//   '配当利回り': number;
+//   'AIによる総評': string;
+//   '発行済株式数': number;
+//   '株価': number;
+//   '配当貴族フラグ': number;
+//   '時価総額': number;
+//   '1株当りの配当金': number;
+//   '次回配当金の権利確定日': string;
+//   '配当性向': number;
+//   '過去5年間の平均配当利回り': number;
+//   '売上高': number;
+//   '利益余剰金': number;
+//   '株主資本(純資産, 自己資本)': number;
+//   '総資産': number;
+//   '純有利子負債': number;
+//   'フリーキャッシュフロー': number;
+//   '営業キャッシュフロー': number;
+//   '財務キャッシュフロー': number;
+//   '投資キャッシュフロー': number;
+//   '現金及び現金同等物': number;
+//   '営業利益率': number;
+//   '流動比率': number;
+//   '自己資本比率': number;
+//   '営業キャッシュフローマージン': number;
+//   [key: string]: string | number;  // インデックスシグネチャの追加。動的なプロパティアクセスにはインデックスシグネチャが必要なため、使用する全てのデータ型をココで定義する
+// }
 
 interface HomeProps {
   data: DataProps[];
@@ -93,7 +95,15 @@ export default function Home({ data }: HomeProps) {
     setIsDataExpanded(!isDataExpanded);
   };
 
-  console.log(data)
+  // TypeScriptでは、undefinedの値を期待しない場合にエラーが発生するため、undefinedでない場合のみ処理を行うようにrenderCell関数を作成する
+  // renderCellという新しい関数を導入しています。この関数は、渡された値がundefinedでない場合のみ値を表示し、undefinedの場合は空文字列を返します。
+  // このrenderCell関数を使用することで、undefinedの値を適切に処理できるようになります。
+  const renderCell = (col: number[] | string[] | undefined, index: number) => {
+    if (col !== undefined && col[index] !== undefined) {
+      return col[index];
+    }
+    return '';
+  };
 
   return (
     <>
@@ -184,15 +194,15 @@ export default function Home({ data }: HomeProps) {
             <tbody>
               {data.map((item: DataProps, index: number) => (
                 <tr key={index} className="bg-white border-b">
-                  <td className="px-6 py-4">{item['ティッカー']}</td>
-                  <td className="px-6 py-4">{item['企業名']}</td>
-                  <td className="px-6 py-4">{item['収益と市場優位性']}</td>
-                  <td className="px-6 py-4">{item['財務の健全性']}</td>
-                  <td className="px-6 py-4">{item['稼ぐ力と安全性']}</td>
-                  <td className="px-6 py-4">{item['配当実績と支払い能力']}</td>
-                  <td className="px-6 py-4">{item['連続増配年数']}</td>
-                  <td className="px-6 py-4">{item['配当利回り']}</td>
-                  <td className="px-6 py-4">{item['AIによる総評']}</td>
+                  <td className="px-6 py-4">{item['ティッカー'][index]}</td>
+                  <td className="px-6 py-4">{item['企業名'][index]}</td>
+                  <td className="px-6 py-4">{item['収益と市場優位性'][index]}</td>
+                  <td className="px-6 py-4">{item['財務の健全性'][index]}</td>
+                  <td className="px-6 py-4">{item['稼ぐ力と安全性'][index]}</td>
+                  <td className="px-6 py-4">{item['配当実績と支払い能力'][index]}</td>
+                  <td className="px-6 py-4">{item['連続増配年数'][index]}</td>
+                  <td className="px-6 py-4">{item['配当利回り'][index]}</td>
+                  <td className="px-6 py-4">{item['AIによる総評'][index]}</td>
                   {isDataExpanded && [
                     '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
                     '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
@@ -208,7 +218,7 @@ export default function Home({ data }: HomeProps) {
                       transition={{ duration: 0.2 }}
                       className="px-6 py-4"
                     >
-                      {item[col]}
+                      {renderCell(item[col][index], index)}
                     </motion.td>
                   ))}
                 </tr>

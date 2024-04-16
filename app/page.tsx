@@ -5,39 +5,76 @@ export const runtime = "edge";   // サーバーサイドを示す
 
 // 型定義
 interface DataProps {
-  'ティッカー': string;
-  '企業名': string;
-  '収益と市場優位性': number;
-  '財務の健全性': number;
-  '稼ぐ力と安全性': number;
-  '配当実績と支払い能力': number;
-  '連続増配年数': number;
-  '配当利回り': number;
-  'AIによる総評': string;
-  '発行済株式数': number;
-  '株価': number;
-  '配当貴族フラグ': number;
-  '時価総額': number;
-  '1株当りの配当金': number;
-  '次回配当金の権利確定日': string;
-  '配当性向': number;
-  '過去5年間の平均配当利回り': number;
-  '売上高': number;
-  '利益余剰金': number;
-  '株主資本(純資産, 自己資本)': number;
-  '総資産': number;
-  '純有利子負債': number;
-  'フリーキャッシュフロー': number;
-  '営業キャッシュフロー': number;
-  '財務キャッシュフロー': number;
-  '投資キャッシュフロー': number;
-  '現金及び現金同等物': number;
-  '営業利益率': number;
-  '流動比率': number;
-  '自己資本比率': number;
-  '営業キャッシュフローマージン': number;
-  [key: string]: string | number;  // インデックスシグネチャの追加。動的なプロパティアクセスにはインデックスシグネチャが必要なため、使用する全てのデータ型をココで定義する
+  'ティッカー': string[];
+  '企業名': string[];
+  '収益と市場優位性': number[];
+  '財務の健全性': number[];
+  '稼ぐ力と安全性': number[];
+  '配当実績と支払い能力': number[];
+  '連続増配年数': number[];
+  '配当利回り': number[];
+  'AIによる総評': string[];
+  '発行済株式数': number[];
+  '株価': number[];
+  '配当貴族フラグ': number[];
+  '時価総額': number[];
+  '1株当りの配当金': number[];
+  '次回配当金の権利確定日': string[];
+  '配当性向': number[];
+  '過去5年間の平均配当利回り': number[];
+  '売上高': number[];
+  '利益余剰金': number[];
+  '株主資本(純資産, 自己資本)': number[];
+  '総資産': number[];
+  '純有利子負債': number[];
+  'フリーキャッシュフロー': number[];
+  '営業キャッシュフロー': number[];
+  '財務キャッシュフロー': number[];
+  '投資キャッシュフロー': number[];
+  '現金及び現金同等物': number[];
+  '営業利益率': number[];
+  '流動比率': number[];
+  '自己資本比率': number[];
+  '営業キャッシュフローマージン': number[];
+  [key: string]: number[] | string[] | undefined;  // DataProps インターフェースの任意のプロパティに対して number[]、string[]、または undefined の値を許容するようになります。
 }
+
+// 全部結合されちゃう。実際には各データは配列なのでこれは間違い
+// interface DataProps {
+//   'ティッカー': string;
+//   '企業名': string;
+//   '収益と市場優位性': number;
+//   '財務の健全性': number;
+//   '稼ぐ力と安全性': number;
+//   '配当実績と支払い能力': number;
+//   '連続増配年数': number;
+//   '配当利回り': number;
+//   'AIによる総評': string;
+//   '発行済株式数': number;
+//   '株価': number;
+//   '配当貴族フラグ': number;
+//   '時価総額': number;
+//   '1株当りの配当金': number;
+//   '次回配当金の権利確定日': string;
+//   '配当性向': number;
+//   '過去5年間の平均配当利回り': number;
+//   '売上高': number;
+//   '利益余剰金': number;
+//   '株主資本(純資産, 自己資本)': number;
+//   '総資産': number;
+//   '純有利子負債': number;
+//   'フリーキャッシュフロー': number;
+//   '営業キャッシュフロー': number;
+//   '財務キャッシュフロー': number;
+//   '投資キャッシュフロー': number;
+//   '現金及び現金同等物': number;
+//   '営業利益率': number;
+//   '流動比率': number;
+//   '自己資本比率': number;
+//   '営業キャッシュフローマージン': number;
+//   [key: string]: string | number;  // インデックスシグネチャの追加。動的なプロパティアクセスにはインデックスシグネチャが必要なため、使用する全てのデータ型をココで定義する
+// }
+
 
 const getKVData = async (): Promise<DataProps> => {
   const { MY_KV_STORE } = process.env as unknown as {
