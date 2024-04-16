@@ -2,6 +2,9 @@
 // minWidth: '1200px' の調整
 // AnimatePresence の位置が変わったか大丈夫か？
 // GitHub Actions のデータ件数を5件に絞っているので解除する
+
+
+
 // client コンポーネント
 "use client";  // この行を追加
 
@@ -51,24 +54,9 @@ interface HomeProps {
   data: DataItem[];
 }
 
-// 各行に展開するためにデータ構造を変換する
-const convertData = (data: any[]): DataItem[] => {
-  if (!data[0]) return [];
-
-  const keys = Object.keys(data[0]);
-  return data[0][keys[0]].map((_: string, i: number) =>
-    keys.reduce((obj, key) => {
-      obj[key] = data[0][key][i];
-      return obj;
-    }, {} as DataItem)
-  );
-};
-
 // export default async function Home({ data }: HomeProps) {
 export default function Home({ data }: HomeProps) {
   const [isDataExpanded, setIsDataExpanded] = useState(false);
-  // const convertedData = convertData(data);　　　★★★
-  const convertedData = data;
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
@@ -161,17 +149,17 @@ export default function Home({ data }: HomeProps) {
               </tr>
             </thead>
             <tbody>
-              {convertedData.map((item: DataItem, index: number) => (
+              {data.map((item: DataItem, index: number) => (
                 <tr key={index} className="bg-white border-b">
                   <td className="px-6 py-4">{item['ティッカー']}</td>
                   <td className="px-6 py-4">{item['企業名']}</td>
-                  <td className="px-6 py-4">{item['収益と市場優位性']}</td>
-                  <td className="px-6 py-4">{item['財務の健全性']}</td>
-                  <td className="px-6 py-4">{item['稼ぐ力と安全性']}</td>
-                  <td className="px-6 py-4">{item['配当実績と支払い能力']}</td>
+                  <td className="px-6 py-4">{Number(item['収益と市場優位性']).toFixed(2)}</td>
+                  <td className="px-6 py-4">{Number(item['財務の健全性']).toFixed(2)}</td>
+                  <td className="px-6 py-4">{Number(item['稼ぐ力と安全性']).toFixed(2)}</td>
+                  <td className="px-6 py-4">{Number(item['配当実績と支払い能力']).toFixed(2)}</td>
                   <td className="px-6 py-4">{item['連続増配年数']}</td>
-                  <td className="px-6 py-4">{item['配当利回り']}</td>
-                  <td className="px-6 py-4">{item['AIによる総評']}</td>
+                  <td className="px-6 py-4"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
+                  <td className="px-6 py-4"><span className="score-pill">{item['AIによる総評']}</span></td>
                   {isDataExpanded && [
                     '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
                     '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
