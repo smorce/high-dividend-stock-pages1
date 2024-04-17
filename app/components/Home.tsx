@@ -68,7 +68,7 @@ export default function Home({ data }: HomeProps) {
         <div className="logo-container">
           <img src="/logo.png" className="w-12 h-12"/>
           {/* <span className="text-gray-700 text-sm">High Dividend Stock Page</span> */}
-          GitHub: <a href="https://github.com/smorce" className="text-blue-500 text-sm github-link" target="_blank">https://github.com/smorce</a>
+          <a href="https://github.com/smorce" className="text-blue-500 text-sm github-link" target="_blank">https://github.com/smorce</a>
         </div>
         <ul className="nav-links">
           <li><a href="#">Home</a></li>
