@@ -1,4 +1,4 @@
-// ★KVバリューを使う。あとは横スクロールバーの追加。表のソート機能。ヘッダー。
+// AIによる総評のカラム幅を固定。表のソート機能(配当利回り、総合得点)。ヘッダー。
 // minWidth: '1200px' の調整
 // AnimatePresence の位置が変わったか大丈夫か？
 // GitHub Actions のデータ件数を5件に絞っているので解除する
@@ -66,7 +66,7 @@ export default function Home({ data }: HomeProps) {
     <>
       <nav className="container mx-auto px-4 py-2 nav-container">
         <div className="logo-container">
-          <img src="https://placehold.co/50" alt="Placeholder image for the logo" className="w-12 h-12"/>
+          <img src="/logo.png" className="w-12 h-12"/>
           <span className="text-gray-700 text-sm">Logo</span>
           <a href="https://github.com/somerepo" className="text-blue-500 text-sm github-link" target="_blank">Github: https://github.com/somerepo</a>
         </div>
