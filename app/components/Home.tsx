@@ -108,8 +108,9 @@ export default function Home({ data }: HomeProps) {
           </div>
         </div>
 
-        <div className="overflow-x-auto mt-6 table-shadow" style={{ maxWidth: '100%' }}>   {/* overflow-x: auto;スタイルを適用します。これにより、内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */}
-          <table className="w-full text-sm text-left text-gray-500" id="data-table" style={{ minWidth: '1430px' }}>   {/* テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
+        <div className="table-container mt-6 table-shadow">    {/* overflow-x: auto;スタイルを適用します。これにより、内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */}
+          {/* <table className="w-full text-sm text-left text-gray-500" id="data-table" style={{ minWidth: '1430px' }}>   テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
+          <table className="text-sm text-left text-gray-500" id="data-table">    {/* テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
             <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>
                 <th scope="col" className="px-6 py-3 width-40">ティッカー</th>
