@@ -1,6 +1,5 @@
-// 小数点2桁で切り下げるためにコードを修正
-// 自己資本比率が低すぎるが合っているか確認 → コードは合ってそう。一旦これで。
-// 配当貴族フラグと連続増配年数が一致していない → 連続増配年数を0で穴埋めすれば良さそうなのでコードを修正した
+// 自己資本比率が低すぎるが合っているか確認 → コードは合ってそう。一旦これで。　→　done
+// 配当貴族フラグと連続増配年数が一致していない → 連続増配年数を0で穴埋めすれば良さそうなのでコードを修正した　→　done
 // 表のソート機能(配当利回り、総合得点)。ヘッダーのリンク。noteの記事
 // AnimatePresence の位置が変わったか大丈夫か？ → 大丈夫
 // GitHub Actions のデータ件数を5件に絞っているので解除する
@@ -160,12 +159,12 @@ export default function Home({ data }: HomeProps) {
                 <tr key={index} className="bg-white border-b">
                   <td className="px-6 py-4 width-70">{item['ティッカー']}</td>
                   <td className="px-6 py-4 width-100">{item['企業名']}</td>
-                  <td className="px-6 py-4 width-70"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
+                  <td className="px-6 py-4 width-70"><span className="score-pill">{Number(item['配当利回り'])}</span></td>
                   <td className="px-6 py-4 width-70">{item['連続増配年数']}</td>
-                  <td className="px-6 py-4 width-70">{Number(item['収益と市場優位性']).toFixed(2)}</td>
-                  <td className="px-6 py-4 width-70">{Number(item['財務の健全性']).toFixed(2)}</td>
-                  <td className="px-6 py-4 width-70">{Number(item['稼ぐ力と安全性']).toFixed(2)}</td>
-                  <td className="px-6 py-4 width-70">{Number(item['配当実績と支払い能力']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['収益と市場優位性'])}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['財務の健全性'])}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['稼ぐ力と安全性'])}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['配当実績と支払い能力'])}</td>
                   {/* 総合得点カラム */}
                   <td className="px-6 py-4 width-70">
                     {(
@@ -197,8 +196,8 @@ export default function Home({ data }: HomeProps) {
 
                     >
                       {/* {item[col] ?? '-'} */}
-                      {['売上高', '利益余剰金', '株主資本(純資産, 自己資本)', '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー', '投資キャッシュフロー', '現金及び現金同等物'].includes(col) ?
-                        `${Math.floor(Number(item[col]) / 1000000)}M` :  // item[col]は文字列なので数値に変換し単位を'M'（百万）にして表示。小数点は切り捨てで表示している
+                      {['発行済株式数', '時価総額', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)', '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー', '投資キャッシュフロー', '現金及び現金同等物'].includes(col) ?
+                        `${Math.floor(Number(item[col]) / 1000000)}M` :  // item[col]は文字列なのでNumber関数で数値に変換し単位を'M'（百万）にして表示。小数点は切り捨てで表示している
                         (item[col] ? item[col].toString() : '-')          // 上記リスト内のカラムではない場合はココで処理する
                       }
                     </motion.td>
