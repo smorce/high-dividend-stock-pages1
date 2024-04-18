@@ -1,6 +1,6 @@
-// AIによる総評のカラム幅を固定。表のソート機能(配当利回り、総合得点)。ヘッダー。
+// AIによる総評のカラム幅を固定。表のソート機能(配当利回り、総合得点)。ヘッダーのリンク。noteの記事
 // minWidth: '1200px' の調整
-// AnimatePresence の位置が変わったか大丈夫か？
+// AnimatePresence の位置が変わったか大丈夫か？ → 大丈夫
 // GitHub Actions のデータ件数を5件に絞っているので解除する
 
 
@@ -67,7 +67,7 @@ export default function Home({ data }: HomeProps) {
       <nav className="container mx-auto px-4 py-2 nav-container">
         <div className="logo-container">
           <img src="/logo.png" className="w-12 h-12"/>
-          {/* <span className="text-gray-700 text-sm">High Dividend Stock Page</span> */}
+          <span className="text-gray-700 text-sm">High Dividend Stock Page made by</span>
           <a href="https://github.com/smorce" className="text-blue-500 text-sm github-link" target="_blank">https://github.com/smorce</a>
         </div>
         <ul className="nav-links">
@@ -109,19 +109,19 @@ export default function Home({ data }: HomeProps) {
         </div>
 
         <div className="overflow-x-auto mt-6 table-shadow" style={{ maxWidth: '100%' }}>   {/* overflow-x: auto;スタイルを適用します。これにより、内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */}
-          <table className="w-full text-sm text-left text-gray-500" id="data-table" style={{ minWidth: '1200px' }}>   {/* テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
+          <table className="w-full text-sm text-left text-gray-500" id="data-table" style={{ minWidth: '1270px' }}>   {/* テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
             <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>
-                <th scope="col" className="px-6 py-3">ティッカー</th>
-                <th scope="col" className="px-6 py-3">企業名</th>
-                <th scope="col" className="px-6 py-3">配当利回り</th>
-                <th scope="col" className="px-6 py-3">連続増配年数</th>
-                <th scope="col" className="px-6 py-3">収益と市場優位性</th>
-                <th scope="col" className="px-6 py-3">財務の健全性</th>
-                <th scope="col" className="px-6 py-3">稼ぐ力と安全性</th>
-                <th scope="col" className="px-6 py-3">配当実績と支払い能力</th>
-                <th scope="col" className="px-6 py-3">総合得点(5点)</th>
-                <th scope="col" className="px-6 py-3">AIによる総評</th>
+                <th scope="col" className="px-6 py-3 width-70">ティッカー</th>
+                <th scope="col" className="px-6 py-3 width-100">企業名</th>
+                <th scope="col" className="px-6 py-3 width-100">配当利回り</th>
+                <th scope="col" className="px-6 py-3 width-100">連続増配年数</th>
+                <th scope="col" className="px-6 py-3 width-100">収益と市場優位性</th>
+                <th scope="col" className="px-6 py-3 width-100">財務の健全性</th>
+                <th scope="col" className="px-6 py-3 width-100">稼ぐ力と安全性</th>
+                <th scope="col" className="px-6 py-3 width-100">配当実績と支払い能力</th>
+                <th scope="col" className="px-6 py-3 width-100">総合得点(5点)</th>
+                <th scope="col" className="px-6 py-3 width-400">AIによる総評</th>
                 {isDataExpanded && (
                   <>
                     <AnimatePresence>
@@ -152,16 +152,16 @@ export default function Home({ data }: HomeProps) {
             <tbody>
               {data.map((item: DataItem, index: number) => (
                 <tr key={index} className="bg-white border-b">
-                  <td className="px-6 py-4">{item['ティッカー']}</td>
-                  <td className="px-6 py-4">{item['企業名']}</td>
-                  <td className="px-6 py-4"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
-                  <td className="px-6 py-4">{item['連続増配年数']}</td>
-                  <td className="px-6 py-4">{Number(item['収益と市場優位性']).toFixed(2)}</td>
-                  <td className="px-6 py-4">{Number(item['財務の健全性']).toFixed(2)}</td>
-                  <td className="px-6 py-4">{Number(item['稼ぐ力と安全性']).toFixed(2)}</td>
-                  <td className="px-6 py-4">{Number(item['配当実績と支払い能力']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-70">{item['ティッカー']}</td>
+                  <td className="px-6 py-4 width-100">{item['企業名']}</td>
+                  <td className="px-6 py-4 width-100"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
+                  <td className="px-6 py-4 width-100">{item['連続増配年数']}</td>
+                  <td className="px-6 py-4 width-100">{Number(item['収益と市場優位性']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-100">{Number(item['財務の健全性']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-100">{Number(item['稼ぐ力と安全性']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-100">{Number(item['配当実績と支払い能力']).toFixed(2)}</td>
                   {/* 総合得点カラム */}
-                  <td className="px-6 py-4">
+                  <td className="px-6 py-4 width-100">
                     {(
                       (
                         Number(item['収益と市場優位性']) +
@@ -171,7 +171,8 @@ export default function Home({ data }: HomeProps) {
                       ) / 4
                     ).toFixed(2)}
                   </td>
-                  <td className="px-6 py-4"><span className="score-pill">{item['AIによる総評']}</span></td>
+                  <td className="px-6 py-4 width-400"><span className="score-pill">{item['AIによる総評']}</span></td>
+                  {/* 隠れカラム */}
                   {isDataExpanded && [
                     '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
                     '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
@@ -185,7 +186,7 @@ export default function Home({ data }: HomeProps) {
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: 100, opacity: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="px-6 py-4"
+                      className="px-6 py-4 width-100"
                     >
                       {item[col] ?? '-'}
                     </motion.td>

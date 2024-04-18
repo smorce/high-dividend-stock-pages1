@@ -28,7 +28,7 @@ body {
     font-size: 40px;
 }
 table {
-    border-collapse: collapse;   /* テーブルのセルの間の隙間を埋める */
+    border-collapse: collapse;   /* テーブルのセルの間の隙間を埋めて縦線を消す */
 }
 .table-header {
     background-color: #F7FAFC;
@@ -36,6 +36,23 @@ table {
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
+
+
+
+.width-70 {
+    width: 70px;
+}
+.width-100 {
+    width: 100px;
+}
+.width-400 {
+    width: 400px;
+}
+
+
+
+
+
 .toggle-container {
     display: flex;
     align-items: center;
