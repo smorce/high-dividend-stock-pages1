@@ -1,6 +1,5 @@
 // 値が大きすぎてはみ出ているので、KVに登録するデータを修正する。まず .0 は不要なのでint型にするのと、Float型は小数点第二位で四捨五入する。
 // 表のソート機能(配当利回り、総合得点)。ヘッダーのリンク。noteの記事
-// minWidth: '1200px' の調整
 // AnimatePresence の位置が変わったか大丈夫か？ → 大丈夫
 // GitHub Actions のデータ件数を5件に絞っているので解除する
 
@@ -140,7 +139,8 @@ export default function Home({ data }: HomeProps) {
                           exit={{ x: 100, opacity: 0 }}
                           transition={{ duration: 0.2 }}
                           scope="col"
-                          className="px-6 py-3 width-70"
+                          className={`px-6 py-3 ${col.length >= 11 ? 'width-100' : 'width-70'}`}   // col名が11文字以上なら width-100 を割り当てる
+
                         >
                           {col}
                         </motion.th>
@@ -188,7 +188,8 @@ export default function Home({ data }: HomeProps) {
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: 100, opacity: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="px-6 py-4 width-70"
+                      className={`px-6 py-4 ${col.length >= 11 ? 'width-100' : 'width-70'}`}   // col名が11文字以上なら width-100 を割り当てる
+
                     >
                       {item[col] ?? '-'}
                     </motion.td>
