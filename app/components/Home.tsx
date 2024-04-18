@@ -108,21 +108,20 @@ export default function Home({ data }: HomeProps) {
           </div>
         </div>
 
-        <div className="table-container mt-6 table-shadow">    {/* overflow-x: auto;スタイルを適用します。これにより、内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */}
-          {/* <table className="w-full text-sm text-left text-gray-500" id="data-table" style={{ minWidth: '1430px' }}>   テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
-          <table className="text-sm text-left text-gray-500" id="data-table">    {/* テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
+        <div className="table-container mt-6 table-shadow">
+          <table className="text-sm text-left text-gray-500" id="data-table">
             <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>
                 <th scope="col" className="px-6 py-3 width-40">ティッカー</th>
                 <th scope="col" className="px-6 py-3 width-100">企業名</th>
-                <th scope="col" className="px-6 py-3 width-40">配当利回り</th>
+                <th scope="col" className="px-6 py-3 width-70">配当利回り</th>
                 <th scope="col" className="px-6 py-3 width-70">連続増配年数</th>
                 <th scope="col" className="px-6 py-3 width-70">収益と市場優位性</th>
                 <th scope="col" className="px-6 py-3 width-70">財務の健全性</th>
                 <th scope="col" className="px-6 py-3 width-70">稼ぐ力と安全性</th>
                 <th scope="col" className="px-6 py-3 width-70">配当実績と支払い能力</th>
                 <th scope="col" className="px-6 py-3 width-70">総合得点(5点)</th>
-                <th scope="col" className="px-6 py-3 width-800">AIによる総評</th>
+                <th scope="col" className="px-6 py-3 width-600">AIによる総評</th>
                 {isDataExpanded && (
                   <>
                     <AnimatePresence>
@@ -155,7 +154,7 @@ export default function Home({ data }: HomeProps) {
                 <tr key={index} className="bg-white border-b">
                   <td className="px-6 py-4 width-40">{item['ティッカー']}</td>
                   <td className="px-6 py-4 width-100">{item['企業名']}</td>
-                  <td className="px-6 py-4 width-40"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
+                  <td className="px-6 py-4 width-70"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
                   <td className="px-6 py-4 width-70">{item['連続増配年数']}</td>
                   <td className="px-6 py-4 width-70">{Number(item['収益と市場優位性']).toFixed(2)}</td>
                   <td className="px-6 py-4 width-70">{Number(item['財務の健全性']).toFixed(2)}</td>
@@ -173,7 +172,7 @@ export default function Home({ data }: HomeProps) {
                     ).toFixed(2)}
                   </td>
                   {/* AIコメントのカラム */}
-                  <td className="px-6 py-4 width-800"><span className="score-pill">{item['AIによる総評']}</span></td>
+                  <td className="px-6 py-4 width-600"><span className="score-pill">{item['AIによる総評']}</span></td>
                   {/* 隠れカラム */}
                   {isDataExpanded && [
                     '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',

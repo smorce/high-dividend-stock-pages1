@@ -38,7 +38,7 @@ table {
 }
 .table-container {
     width: 100%;
-    overflow-x: auto;
+    overflow-x: auto;   /* 内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */
 }
 #data-table {
     table-layout: fixed;
@@ -55,8 +55,8 @@ table {
 .width-100 {
     width: 100px;
 }
-.width-800 {
-    width: 800px;
+.width-600 {
+    width: 600px;
 }
 
 
