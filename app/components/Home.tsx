@@ -71,7 +71,7 @@ export default function Home({ data }: HomeProps) {
           {/* <a href="https://github.com/smorce" className="text-blue-500 text-sm github-link" target="_blank">https://github.com/smorce</a> */}
         </div>
         <ul className="nav-links">
-          <li><a href="#">Home</a></li>
+          <li><a href="/">Home</a></li>  {/* HomeリンクがTOPページにリダイレクトするように変更 */}
           <li><a href="#">About</a></li>
           <li><a href="#">Twitter</a></li>
         </ul>
