@@ -3,6 +3,9 @@
 // AnimatePresence の位置が変わったか大丈夫か？ → 大丈夫
 // GitHub Actions のデータ件数を5件に絞っているので解除する
 
+// Tips
+// item[col] as number と書くと数値型であるとTypeScriptの型チェッカーが数値型として認識し、算術演算を適用できるようになる
+
 
 
 // client コンポーネント
@@ -191,7 +194,14 @@ export default function Home({ data }: HomeProps) {
                       className={`px-6 py-4 ${col.length >= 11 ? 'width-100' : 'width-70'}`}   // col名が11文字以上なら width-100 を割り当てる
 
                     >
-                      {item[col] ?? '-'}
+                      {/* {item[col] ?? '-'} */}
+                      {typeof item[col] === 'number' ?  // item[col] が number 型の場合のみ計算を実行
+                        (['売上高', '利益余剰金', '株主資本(純資産, 自己資本)', '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー', '投資キャッシュフロー', '現金及び現金同等物'].includes(col) ?
+                          `${(item[col] as number / 1000000).toFixed(2)}M` :  // 数値の場合、単位を'M'（百万）にして表示
+                          item[col].toString()) :  // 数値以外の場合はそのまま文字列として表示
+                        '-'
+                      }
+
                     </motion.td>
                   ))}
                 </tr>
