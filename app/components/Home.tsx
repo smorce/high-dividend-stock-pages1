@@ -67,8 +67,8 @@ export default function Home({ data }: HomeProps) {
       <nav className="container mx-auto px-4 py-2 nav-container">
         <div className="logo-container">
           <img src="/logo.png" className="w-12 h-12"/>
-          <span className="text-gray-700 text-sm">High Dividend Stock Page made by</span>
-          <a href="https://github.com/smorce" className="text-blue-500 text-sm github-link" target="_blank">https://github.com/smorce</a>
+          <span className="text-gray-700 text-sm">High Dividend Stock Page by smorce</span>
+          {/* <a href="https://github.com/smorce" className="text-blue-500 text-sm github-link" target="_blank">https://github.com/smorce</a> */}
         </div>
         <ul className="nav-links">
           <li><a href="#">Home</a></li>
@@ -109,19 +109,19 @@ export default function Home({ data }: HomeProps) {
         </div>
 
         <div className="overflow-x-auto mt-6 table-shadow" style={{ maxWidth: '100%' }}>   {/* overflow-x: auto;スタイルを適用します。これにより、内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */}
-          <table className="w-full text-sm text-left text-gray-500" id="data-table" style={{ minWidth: '1270px' }}>   {/* テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
+          <table className="w-full text-sm text-left text-gray-500" id="data-table" style={{ minWidth: '1430px' }}>   {/* テーブルが適切にスクロールされるように、min-widthプロパティをテーブルに適用するとよいでしょう。これはテーブルの最小幅を設定し、カラムが縮まないようにします */}
             <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>
-                <th scope="col" className="px-6 py-3 width-70">ティッカー</th>
+                <th scope="col" className="px-6 py-3 width-40">ティッカー</th>
                 <th scope="col" className="px-6 py-3 width-100">企業名</th>
-                <th scope="col" className="px-6 py-3 width-100">配当利回り</th>
-                <th scope="col" className="px-6 py-3 width-100">連続増配年数</th>
-                <th scope="col" className="px-6 py-3 width-100">収益と市場優位性</th>
-                <th scope="col" className="px-6 py-3 width-100">財務の健全性</th>
-                <th scope="col" className="px-6 py-3 width-100">稼ぐ力と安全性</th>
-                <th scope="col" className="px-6 py-3 width-100">配当実績と支払い能力</th>
-                <th scope="col" className="px-6 py-3 width-100">総合得点(5点)</th>
-                <th scope="col" className="px-6 py-3 width-400">AIによる総評</th>
+                <th scope="col" className="px-6 py-3 width-70">配当利回り</th>
+                <th scope="col" className="px-6 py-3 width-70">連続増配年数</th>
+                <th scope="col" className="px-6 py-3 width-70">収益と市場優位性</th>
+                <th scope="col" className="px-6 py-3 width-70">財務の健全性</th>
+                <th scope="col" className="px-6 py-3 width-70">稼ぐ力と安全性</th>
+                <th scope="col" className="px-6 py-3 width-70">配当実績と支払い能力</th>
+                <th scope="col" className="px-6 py-3 width-70">総合得点(5点)</th>
+                <th scope="col" className="px-6 py-3 width-800">AIによる総評</th>
                 {isDataExpanded && (
                   <>
                     <AnimatePresence>
@@ -139,7 +139,7 @@ export default function Home({ data }: HomeProps) {
                           exit={{ x: 100, opacity: 0 }}
                           transition={{ duration: 0.2 }}
                           scope="col"
-                          className="px-6 py-3"
+                          className="px-6 py-3 width-70"
                         >
                           {col}
                         </motion.th>
@@ -152,16 +152,16 @@ export default function Home({ data }: HomeProps) {
             <tbody>
               {data.map((item: DataItem, index: number) => (
                 <tr key={index} className="bg-white border-b">
-                  <td className="px-6 py-4 width-70">{item['ティッカー']}</td>
+                  <td className="px-6 py-4 width-40">{item['ティッカー']}</td>
                   <td className="px-6 py-4 width-100">{item['企業名']}</td>
-                  <td className="px-6 py-4 width-100"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
-                  <td className="px-6 py-4 width-100">{item['連続増配年数']}</td>
-                  <td className="px-6 py-4 width-100">{Number(item['収益と市場優位性']).toFixed(2)}</td>
-                  <td className="px-6 py-4 width-100">{Number(item['財務の健全性']).toFixed(2)}</td>
-                  <td className="px-6 py-4 width-100">{Number(item['稼ぐ力と安全性']).toFixed(2)}</td>
-                  <td className="px-6 py-4 width-100">{Number(item['配当実績と支払い能力']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-70"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
+                  <td className="px-6 py-4 width-70">{item['連続増配年数']}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['収益と市場優位性']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['財務の健全性']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['稼ぐ力と安全性']).toFixed(2)}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['配当実績と支払い能力']).toFixed(2)}</td>
                   {/* 総合得点カラム */}
-                  <td className="px-6 py-4 width-100">
+                  <td className="px-6 py-4 width-70">
                     {(
                       (
                         Number(item['収益と市場優位性']) +
@@ -171,7 +171,8 @@ export default function Home({ data }: HomeProps) {
                       ) / 4
                     ).toFixed(2)}
                   </td>
-                  <td className="px-6 py-4 width-400"><span className="score-pill">{item['AIによる総評']}</span></td>
+                  {/* AIコメントのカラム */}
+                  <td className="px-6 py-4 width-800"><span className="score-pill">{item['AIによる総評']}</span></td>
                   {/* 隠れカラム */}
                   {isDataExpanded && [
                     '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
@@ -186,7 +187,7 @@ export default function Home({ data }: HomeProps) {
                       animate={{ x: 0, opacity: 1 }}
                       exit={{ x: 100, opacity: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="px-6 py-4 width-100"
+                      className="px-6 py-4 width-70"
                     >
                       {item[col] ?? '-'}
                     </motion.td>

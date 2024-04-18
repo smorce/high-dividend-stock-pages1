@@ -39,14 +39,17 @@ table {
 
 
 
+.width-40 {
+    width: 40px;
+}
 .width-70 {
     width: 70px;
 }
 .width-100 {
     width: 100px;
 }
-.width-400 {
-    width: 400px;
+.width-800 {
+    width: 800px;
 }
 
 
