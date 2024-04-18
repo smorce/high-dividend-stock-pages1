@@ -1,4 +1,5 @@
-// AIによる総評のカラム幅を固定。表のソート機能(配当利回り、総合得点)。ヘッダーのリンク。noteの記事
+// 値が大きすぎてはみ出ているので、KVに登録するデータを修正する。まず .0 は不要なのでint型にするのと、Float型は小数点第二位で四捨五入する。
+// 表のソート機能(配当利回り、総合得点)。ヘッダーのリンク。noteの記事
 // minWidth: '1200px' の調整
 // AnimatePresence の位置が変わったか大丈夫か？ → 大丈夫
 // GitHub Actions のデータ件数を5件に絞っているので解除する
@@ -73,7 +74,7 @@ export default function Home({ data }: HomeProps) {
         <ul className="nav-links">
           <li><a href="/">Home</a></li>  {/* HomeリンクがTOPページにリダイレクトするように変更 */}
           <li><a href="#">About</a></li>
-          <li><a href="#">Twitter</a></li>
+          <li><a href="https://twitter.com/smorce1">Twitter</a></li>
         </ul>
       </nav>
 
