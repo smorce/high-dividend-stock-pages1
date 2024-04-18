@@ -115,7 +115,7 @@ export default function Home({ data }: HomeProps) {
               <tr>
                 <th scope="col" className="px-6 py-3 width-40">ティッカー</th>
                 <th scope="col" className="px-6 py-3 width-100">企業名</th>
-                <th scope="col" className="px-6 py-3 width-70">配当利回り</th>
+                <th scope="col" className="px-6 py-3 width-40">配当利回り</th>
                 <th scope="col" className="px-6 py-3 width-70">連続増配年数</th>
                 <th scope="col" className="px-6 py-3 width-70">収益と市場優位性</th>
                 <th scope="col" className="px-6 py-3 width-70">財務の健全性</th>
@@ -155,7 +155,7 @@ export default function Home({ data }: HomeProps) {
                 <tr key={index} className="bg-white border-b">
                   <td className="px-6 py-4 width-40">{item['ティッカー']}</td>
                   <td className="px-6 py-4 width-100">{item['企業名']}</td>
-                  <td className="px-6 py-4 width-70"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
+                  <td className="px-6 py-4 width-40"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
                   <td className="px-6 py-4 width-70">{item['連続増配年数']}</td>
                   <td className="px-6 py-4 width-70">{Number(item['収益と市場優位性']).toFixed(2)}</td>
                   <td className="px-6 py-4 width-70">{Number(item['財務の健全性']).toFixed(2)}</td>
