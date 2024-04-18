@@ -116,7 +116,7 @@ export default function Home({ data }: HomeProps) {
           <table className="text-sm text-left text-gray-500" id="data-table">
             <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>
-                <th scope="col" className="px-6 py-3 width-40">ティッカー</th>
+                <th scope="col" className="px-6 py-3 width-70">ティッカー</th>
                 <th scope="col" className="px-6 py-3 width-100">企業名</th>
                 <th scope="col" className="px-6 py-3 width-70">配当利回り</th>
                 <th scope="col" className="px-6 py-3 width-70">連続増配年数</th>
@@ -157,7 +157,7 @@ export default function Home({ data }: HomeProps) {
             <tbody>
               {data.map((item: DataItem, index: number) => (
                 <tr key={index} className="bg-white border-b">
-                  <td className="px-6 py-4 width-40">{item['ティッカー']}</td>
+                  <td className="px-6 py-4 width-70">{item['ティッカー']}</td>
                   <td className="px-6 py-4 width-100">{item['企業名']}</td>
                   <td className="px-6 py-4 width-70"><span className="score-pill">{Number(item['配当利回り']).toFixed(2)}</span></td>
                   <td className="px-6 py-4 width-70">{item['連続増配年数']}</td>
@@ -197,7 +197,7 @@ export default function Home({ data }: HomeProps) {
                     >
                       {/* {item[col] ?? '-'} */}
                       {['売上高', '利益余剰金', '株主資本(純資産, 自己資本)', '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー', '投資キャッシュフロー', '現金及び現金同等物'].includes(col) ?
-                        `${(Number(item[col]) / 1000000).toFixed(2)}M` :  // item[col]は文字列なので数値に変換し単位を'M'（百万）にして表示
+                        `${Math.floor(Number(item[col]) / 1000000)}M` :  // item[col]は文字列なので数値に変換し単位を'M'（百万）にして表示。小数点は切り捨てで表示している
                         (item[col] ? item[col].toString() : '-')          // 上記リスト内のカラムではない場合はココで処理する
                       }
                     </motion.td>
