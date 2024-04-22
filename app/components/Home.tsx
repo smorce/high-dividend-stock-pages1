@@ -13,7 +13,7 @@
 // client コンポーネント
 "use client";  // この行を追加
 
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './tableStyles.css';
 
@@ -62,8 +62,9 @@ interface HomeProps {
 // export default async function Home({ data }: HomeProps) {
 export default function Home({ data }: HomeProps) {
   const [isDataExpanded, setIsDataExpanded] = useState(false);
-  const tableContainerRef = useRef<HTMLDivElement>(null);
-  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const tableRef = useRef<HTMLTableElement>(null);
+  const [tableHeight, setTableHeight] = useState(0);
+
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
@@ -71,20 +72,35 @@ export default function Home({ data }: HomeProps) {
 
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (tableContainerRef.current) {
-        const tableContainerTop = tableContainerRef.current.getBoundingClientRect().top;
-        setIsHeaderFixed(tableContainerTop < 0);
-      }
-    };
+    if (tableRef.current) {
+      setTableHeight(tableRef.current.offsetHeight);
+    }
+  }, [isDataExpanded]);
 
+  const handleScroll = () => {
+    if (tableRef.current) {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const tableTop = tableRef.current.getBoundingClientRect().top + scrollTop;
+      const headerHeight = 50; // ヘッダーの高さを設定
+
+      if (scrollTop > tableTop) {
+        tableRef.current.style.position = 'sticky';
+        tableRef.current.style.top = `${headerHeight}px`;
+      } else {
+        tableRef.current.style.position = 'static';
+        tableRef.current.style.top = 'auto';
+      }
+    }
+  };
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-
+  
   return (
     <>
       <nav className="container mx-auto px-4 py-2 nav-container">
@@ -131,106 +147,105 @@ export default function Home({ data }: HomeProps) {
           </div>
         </div>
 
-        <div className="table-container mt-6 table-shadow" ref={tableContainerRef}>
-          <div className={`table-header-fixed ${isHeaderFixed ? 'fixed' : ''}`}>
-            <table className="text-sm text-left text-gray-500" id="data-table">
-              <thead className="table-header text-xs text-gray-700 uppercase">
-                <tr>
-                  <th scope="col" className="px-6 py-3 width-70">ティッカー</th>
-                  <th scope="col" className="px-6 py-3 width-100">企業名</th>
-                  <th scope="col" className="px-6 py-3 width-70">配当利回り</th>
-                  <th scope="col" className="px-6 py-3 width-70">連続増配年数</th>
-                  <th scope="col" className="px-6 py-3 width-70">収益と市場優位性</th>
-                  <th scope="col" className="px-6 py-3 width-70">財務の健全性</th>
-                  <th scope="col" className="px-6 py-3 width-70">稼ぐ力と安全性</th>
-                  <th scope="col" className="px-6 py-3 width-70">配当実績と支払い能力</th>
-                  <th scope="col" className="px-6 py-3 width-70">総合得点(5点)</th>
-                  <th scope="col" className="px-6 py-3 width-600">AIによる総評</th>
-                  {isDataExpanded && (
-                    <>
-                      <AnimatePresence>
-                        {[
-                          '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
-                          '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
-                          '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー',
-                          '投資キャッシュフロー', '現金及び現金同等物', '営業利益率', '流動比率', '自己資本比率',
-                          '営業キャッシュフローマージン'
-                        ].map(col => (
-                          <motion.th
-                            key={col}
-                            initial={{ x: -100, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            exit={{ x: 100, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                            scope="col"
-                            className={`px-6 py-3 ${col.length >= 11 ? 'width-100' : 'width-70'}`}   // col名が11文字以上なら width-100 を割り当てる
+        <div className="table-container mt-6 table-shadow">
+          <table
+            className="text-sm text-left text-gray-500"
+            id="data-table"
+            ref={tableRef}
+            style={{ marginTop: `${tableHeight}px` }}
+          >
+            <thead className="table-header text-xs text-gray-700 uppercase sticky top-0 z-10">
+              <tr>
+                <th scope="col" className="px-6 py-3 width-70">ティッカー</th>
+                <th scope="col" className="px-6 py-3 width-100">企業名</th>
+                <th scope="col" className="px-6 py-3 width-70">配当利回り</th>
+                <th scope="col" className="px-6 py-3 width-70">連続増配年数</th>
+                <th scope="col" className="px-6 py-3 width-70">収益と市場優位性</th>
+                <th scope="col" className="px-6 py-3 width-70">財務の健全性</th>
+                <th scope="col" className="px-6 py-3 width-70">稼ぐ力と安全性</th>
+                <th scope="col" className="px-6 py-3 width-70">配当実績と支払い能力</th>
+                <th scope="col" className="px-6 py-3 width-70">総合得点(5点)</th>
+                <th scope="col" className="px-6 py-3 width-600">AIによる総評</th>
+                {isDataExpanded && (
+                  <>
+                    <AnimatePresence>
+                      {[
+                        '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
+                        '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
+                        '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー',
+                        '投資キャッシュフロー', '現金及び現金同等物', '営業利益率', '流動比率', '自己資本比率',
+                        '営業キャッシュフローマージン'
+                      ].map(col => (
+                        <motion.th
+                          key={col}
+                          initial={{ x: -100, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          exit={{ x: 100, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          scope="col"
+                          className={`px-6 py-3 ${col.length >= 11 ? 'width-100' : 'width-70'}`}   // col名が11文字以上なら width-100 を割り当てる
 
-                          >
-                            {col}
-                          </motion.th>
-                        ))}
-                      </AnimatePresence>
-                    </>
-                  )}
+                        >
+                          {col}
+                        </motion.th>
+                      ))}
+                    </AnimatePresence>
+                  </>
+                )}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item: DataItem, index: number) => (
+                <tr key={index} className="bg-white border-b">
+                  <td className="px-6 py-4 width-70">{item['ティッカー']}</td>
+                  <td className="px-6 py-4 width-100">{item['企業名']}</td>
+                  <td className="px-6 py-4 width-70"><span className="score-pill">{Number(item['配当利回り'])}</span></td>
+                  <td className="px-6 py-4 width-70">{item['連続増配年数']}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['収益と市場優位性'])}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['財務の健全性'])}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['稼ぐ力と安全性'])}</td>
+                  <td className="px-6 py-4 width-70">{Number(item['配当実績と支払い能力'])}</td>
+                  {/* 総合得点カラム */}
+                  <td className="px-6 py-4 width-70">
+                    {(
+                      (
+                        Number(item['収益と市場優位性']) +
+                        Number(item['財務の健全性']) +
+                        Number(item['稼ぐ力と安全性']) +
+                        Number(item['配当実績と支払い能力'])
+                      ) / 4
+                    ).toFixed(2)}
+                  </td>
+                  {/* AIコメントのカラム */}
+                  <td className="px-6 py-4 width-600"><span className="score-pill">{item['AIによる総評']}</span></td>
+                  {/* 隠れカラム */}
+                  {isDataExpanded && [
+                    '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
+                    '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
+                    '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー',
+                    '投資キャッシュフロー', '現金及び現金同等物', '営業利益率', '流動比率', '自己資本比率',
+                    '営業キャッシュフローマージン'
+                  ].map(col => (
+                    <motion.td
+                      key={col}
+                      initial={{ x: -100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: 100, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className={`px-6 py-4 ${col.length >= 11 ? 'width-100' : 'width-70'}`}   // col名が11文字以上なら width-100 を割り当てる
+
+                    >
+                      {/* {item[col] ?? '-'} */}
+                      {['発行済株式数', '時価総額', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)', '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー', '投資キャッシュフロー', '現金及び現金同等物'].includes(col) ?
+                        `${Math.floor(Number(item[col]) / 1000000)}M` :  // item[col]は文字列なのでNumber関数で数値に変換し単位を'M'（百万）にして表示。小数点は切り捨てで表示している
+                        (item[col] ? item[col].toString() : '-')          // 上記リスト内のカラムではない場合はココで処理する
+                      }
+                    </motion.td>
+                  ))}
                 </tr>
-              </thead>
-            </table>
-          </div>
-          <div className="table-body">
-            <table className="text-sm text-left text-gray-500" id="data-table">
-              <tbody>
-                {data.map((item: DataItem, index: number) => (
-                  <tr key={index} className="bg-white border-b">
-                    <td className="px-6 py-4 width-70">{item['ティッカー']}</td>
-                    <td className="px-6 py-4 width-100">{item['企業名']}</td>
-                    <td className="px-6 py-4 width-70"><span className="score-pill">{Number(item['配当利回り'])}</span></td>
-                    <td className="px-6 py-4 width-70">{item['連続増配年数']}</td>
-                    <td className="px-6 py-4 width-70">{Number(item['収益と市場優位性'])}</td>
-                    <td className="px-6 py-4 width-70">{Number(item['財務の健全性'])}</td>
-                    <td className="px-6 py-4 width-70">{Number(item['稼ぐ力と安全性'])}</td>
-                    <td className="px-6 py-4 width-70">{Number(item['配当実績と支払い能力'])}</td>
-                    {/* 総合得点カラム */}
-                    <td className="px-6 py-4 width-70">
-                      {(
-                        (
-                          Number(item['収益と市場優位性']) +
-                          Number(item['財務の健全性']) +
-                          Number(item['稼ぐ力と安全性']) +
-                          Number(item['配当実績と支払い能力'])
-                        ) / 4
-                      ).toFixed(2)}
-                    </td>
-                    {/* AIコメントのカラム */}
-                    <td className="px-6 py-4 width-600"><span className="score-pill">{item['AIによる総評']}</span></td>
-                    {/* 隠れカラム */}
-                    {isDataExpanded && [
-                      '発行済株式数', '株価', '配当貴族フラグ', '時価総額', '1株当りの配当金', '次回配当金の権利確定日',
-                      '配当性向', '過去5年間の平均配当利回り', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)',
-                      '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー',
-                      '投資キャッシュフロー', '現金及び現金同等物', '営業利益率', '流動比率', '自己資本比率',
-                      '営業キャッシュフローマージン'
-                    ].map(col => (
-                      <motion.td
-                        key={col}
-                        initial={{ x: -100, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: 100, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className={`px-6 py-4 ${col.length >= 11 ? 'width-100' : 'width-70'}`}   // col名が11文字以上なら width-100 を割り当てる
-
-                      >
-                        {/* {item[col] ?? '-'} */}
-                        {['発行済株式数', '時価総額', '売上高', '利益余剰金', '株主資本(純資産, 自己資本)', '総資産', '純有利子負債', 'フリーキャッシュフロー', '営業キャッシュフロー', '財務キャッシュフロー', '投資キャッシュフロー', '現金及び現金同等物'].includes(col) ?
-                          `${Math.floor(Number(item[col]) / 1000000)}M` :  // item[col]は文字列なのでNumber関数で数値に変換し単位を'M'（百万）にして表示。小数点は切り捨てで表示している
-                          (item[col] ? item[col].toString() : '-')          // 上記リスト内のカラムではない場合はココで処理する
-                        }
-                      </motion.td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

@@ -32,33 +32,21 @@ table {
 }
 .table-header {
     background-color: #F7FAFC;
+    position: sticky; /* ヘッダーを固定する */
+    top: 0; /* 上部に固定する */
+    z-index: 10; /* ヘッダーが最前面に表示される */
 }
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 .table-container {
     width: 100%;
-    overflow-y: auto;
-    max-height: 500px; /* テーブルの最大高さを指定 */
-}
-.table-header-fixed {
-    position: relative;
-    width: 100%;
-    background-color: #F7FAFC;
-    z-index: 1;
+    overflow-x: auto;   /* 内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */
 }
 #data-table {
     table-layout: fixed;
     width: 100%;
 }
-.table-header-fixed.fixed {
-    position: sticky;
-    top: 0;
-}
-.table-body {
-    width: 100%;
-}
-
 
 
 .width-40 {
