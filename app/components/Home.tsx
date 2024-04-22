@@ -70,7 +70,7 @@ export default function Home({ data }: HomeProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsHeaderFixed(window.scrollY > 100);
+      setIsHeaderFixed(window.scrollY > 1000);
     };
 
     window.addEventListener('scroll', handleScroll);
