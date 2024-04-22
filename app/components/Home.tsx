@@ -13,7 +13,7 @@
 // client コンポーネント
 "use client";  // この行を追加
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './tableStyles.css';
 
@@ -62,9 +62,7 @@ interface HomeProps {
 // export default async function Home({ data }: HomeProps) {
 export default function Home({ data }: HomeProps) {
   const [isDataExpanded, setIsDataExpanded] = useState(false);
-  const tableRef = useRef<HTMLTableElement>(null);
-  const [tableHeight, setTableHeight] = useState(0);
-
+  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
@@ -72,35 +70,26 @@ export default function Home({ data }: HomeProps) {
 
 
   useEffect(() => {
-    if (tableRef.current) {
-      setTableHeight(tableRef.current.offsetHeight);
-    }
-  }, [isDataExpanded]);
+    const headerElement = document.querySelector('.table-header');
 
-  const handleScroll = () => {
-    if (tableRef.current) {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const tableTop = tableRef.current.getBoundingClientRect().top + scrollTop;
-      const headerHeight = 50; // ヘッダーの高さを設定
+    const onScroll = () => {
+      if (headerElement) {
+        const headerTopPosition = headerElement.getBoundingClientRect().top + window.scrollY;
+        const scrollPosition = window.scrollY;
 
-      if (scrollTop > tableTop) {
-        tableRef.current.style.position = 'sticky';
-        tableRef.current.style.top = `${headerHeight}px`;
-      } else {
-        tableRef.current.style.position = 'static';
-        tableRef.current.style.top = 'auto';
+        if (scrollPosition >= headerTopPosition) {
+          setIsHeaderFixed(true);
+        } else {
+          setIsHeaderFixed(false);
+        }
       }
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
     };
+
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  
+
   return (
     <>
       <nav className="container mx-auto px-4 py-2 nav-container">
@@ -148,13 +137,8 @@ export default function Home({ data }: HomeProps) {
         </div>
 
         <div className="table-container mt-6 table-shadow">
-          <table
-            className="text-sm text-left text-gray-500"
-            id="data-table"
-            ref={tableRef}
-            style={{ marginTop: `${tableHeight}px` }}
-          >
-            <thead className="table-header text-xs text-gray-700 uppercase sticky top-0 z-10">
+          <table className="text-sm text-left text-gray-500" id="data-table">
+            <thead className={`table-header ${isHeaderFixed ? 'fixed' : ''}`}>
               <tr>
                 <th scope="col" className="px-6 py-3 width-70">ティッカー</th>
                 <th scope="col" className="px-6 py-3 width-100">企業名</th>

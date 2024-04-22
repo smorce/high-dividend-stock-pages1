@@ -32,9 +32,6 @@ table {
 }
 .table-header {
     background-color: #F7FAFC;
-    position: sticky; /* ヘッダーを固定する */
-    top: 0; /* 上部に固定する */
-    z-index: 10; /* ヘッダーが最前面に表示される */
 }
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -47,6 +44,14 @@ table {
     table-layout: fixed;
     width: 100%;
 }
+.table-header.fixed {
+    position: sticky;
+    top: 0;
+    background-color: #F7FAFC;
+    z-index: 1000;
+    box-shadow: 0 2px 2px -1px rgba(0,0,0,0.4);
+}
+
 
 
 .width-40 {
