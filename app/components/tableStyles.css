@@ -55,6 +55,10 @@ table {
     overflow-y: hidden; /* スクロールバーを隠す */
     max-height: none; /* 最大高さ制限を解除 */
 }
+.scroll-active {
+    overflow-y: auto; /* スクロールバーを表示 */
+    max-height: 800px; /* 最大高さを400pxに設定 */
+}
 
 
 .width-40 {

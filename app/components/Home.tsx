@@ -71,22 +71,16 @@ export default function Home({ data }: HomeProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // スクロール位置が500px以上かどうかをチェックし、状態を更新
-      const isAbove500 = window.scrollY >= 500;
-      if (isAbove500 !== isScrollAbove500) {
-        setIsScrollAbove500(isAbove500);
-      }
+      // 現在のスクロール位置が500pxを超えるかどうかをチェック
+      setIsScrollAbove500(window.scrollY >= 500);
     };
 
     // スクロールイベントリスナーを登録
     window.addEventListener('scroll', handleScroll);
 
     // コンポーネントのアンマウント時にイベントリスナーを削除
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isScrollAbove500]);
-
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []); // 依存配列を空にして、コンポーネントのマウント時のみリスナーを設定
 
   return (
     <>
