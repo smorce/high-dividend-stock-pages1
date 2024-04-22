@@ -46,7 +46,7 @@ table {
 }
 .sticky-header {
     position: sticky;
-    top: 0; /* 画面の上端から0pxの位置に固定 */
+    top: 500; /* 画面の上端から Npx の位置に固定 */
     background-color: white; /* 背景色を設定 */
     z-index: 10; /* 他の要素より上に表示 */
     box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); /* 影を追加して視認性を向上 */
