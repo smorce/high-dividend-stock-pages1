@@ -44,14 +44,6 @@ table {
     table-layout: fixed;
     width: 100%;
 }
-.table-header.fixed {
-    position: sticky;
-    top: 0;
-    background-color: #F7FAFC;
-    z-index: 1;
-    box-shadow: 0 2px 2px -1px rgba(0,0,0,0.4);
-}
-
 
 
 .width-40 {

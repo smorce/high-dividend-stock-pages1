@@ -13,7 +13,7 @@
 // client コンポーネント
 "use client";  // この行を追加
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './tableStyles.css';
 
@@ -62,23 +62,10 @@ interface HomeProps {
 // export default async function Home({ data }: HomeProps) {
 export default function Home({ data }: HomeProps) {
   const [isDataExpanded, setIsDataExpanded] = useState(false);
-  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.pageYOffset;
-      setIsHeaderFixed(scrollPosition > 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <>
@@ -128,7 +115,7 @@ export default function Home({ data }: HomeProps) {
 
         <div className="table-container mt-6 table-shadow">
           <table className="text-sm text-left text-gray-500" id="data-table">
-            <thead className={`table-header ${isHeaderFixed ? 'fixed' : ''}`}>
+            <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>
                 <th scope="col" className="px-6 py-3 width-70">ティッカー</th>
                 <th scope="col" className="px-6 py-3 width-100">企業名</th>
