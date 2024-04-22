@@ -33,30 +33,36 @@ table {
 .table-header {
     background-color: #F7FAFC;
 }
-.table-header th {
-    background-color: #F7FAFC;
-    position: sticky;
-    top: 0;
-    z-index: 10; /* Ensure the header is above other content */
-}
-/* Additional styles to ensure visibility of sticky headers */
-thead th {
-    border-top: 1px solid #E5E7EB; /* Light gray border for the top of the header */
-    border-bottom: 2px solid #E5E7EB; /* Slightly darker border for the bottom to distinguish from table body */
-}
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
+
+
 .table-container {
     width: 100%;
-    overflow-x: auto;  /* 内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */
-    overflow-y: auto; /* Add vertical scrolling if not already present */
-    max-height: 80vh; /* Adjust based on your design needs */
+    overflow: hidden; /* Hide vertical scrollbar */
+    margin-top: 40px; /* Give some space from top for visibility */
 }
+
+#data-table {
+    width: 100%;
+    position: relative; /* Context for positioning */
+}
+
+.table-header {
+    position: sticky;
+    top: 0; /* Stick to the top of the table container */
+    background-color: #F7FAFC; /* Maintain background on scroll */
+    z-index: 10; /* Ensure it's above other content */
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1); /* Optional: adds shadow to the header */
+}
+
+
 #data-table {
     table-layout: fixed;
     width: 100%;
 }
+
 
 .width-40 {
     width: 40px;
