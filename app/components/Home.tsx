@@ -13,7 +13,7 @@
 // client コンポーネント
 "use client";  // この行を追加
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './tableStyles.css';
 
@@ -66,6 +66,33 @@ export default function Home({ data }: HomeProps) {
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
   };
+
+  useEffect(() => {
+    const tableContainer = document.querySelector('.table-container') as HTMLDivElement;
+
+
+    const handleScroll = () => {
+      // tableContainer が null でないことを確認
+      if (tableContainer) {
+        if (window.scrollY >= 500) {
+          tableContainer.style.overflowY = 'auto';
+          tableContainer.style.maxHeight = '800px';
+        } else {
+          tableContainer.style.overflowY = 'hidden';
+          tableContainer.style.maxHeight = 'none';
+        }
+      }
+    };
+
+    // スクロールイベントリスナーを登録
+    window.addEventListener('scroll', handleScroll);
+
+    // コンポーネントのアンマウント時にイベントリスナーを削除
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
 
   return (
     <>

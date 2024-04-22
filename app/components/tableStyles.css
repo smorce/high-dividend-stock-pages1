@@ -39,13 +39,10 @@ table {
 .table-container {
     width: 100%;
     overflow-x: auto;   /* 横スクロールバーが表示されるように設定 */
-    overflow-y: auto;   /* 縦スクロールバーを追加 */
-    max-height: 800px;  /* 最大高さを設定し、これを超えるとスクロールが有効になる */
 }
 #data-table {
     table-layout: fixed;
     width: 100%;
-    border-collapse: collapse;   /* テーブルのセルの間の隙間を埋めて縦線を消す */
     position: relative; /* テーブルヘッダーの固定位置の基準とする */
 }
 .table-header {
