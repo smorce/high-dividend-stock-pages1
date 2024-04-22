@@ -13,7 +13,7 @@
 // client コンポーネント
 "use client";  // この行を追加
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './tableStyles.css';
 
@@ -63,18 +63,24 @@ interface HomeProps {
 export default function Home({ data }: HomeProps) {
   const [isDataExpanded, setIsDataExpanded] = useState(false);
   const [isHeaderFixed, setIsHeaderFixed] = useState(false);
+  const tableContainerRef = useRef<HTMLDivElement>(null);
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
   };
 
-
+  
   useEffect(() => {
     const handleScroll = () => {
-      setIsHeaderFixed(window.scrollY > 500);
+      if (window.scrollY >= 500) {
+        setIsHeaderFixed(true);
+      } else {
+        setIsHeaderFixed(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -127,9 +133,27 @@ export default function Home({ data }: HomeProps) {
           </div>
         </div>
 
-        <div className={`table-container ${isHeaderFixed ? 'table-scroll' : ''} mt-6 table-shadow`}>
+        <div
+          className={`table-container mt-6 table-shadow ${isHeaderFixed ? 'header-fixed' : ''}`}
+          ref={tableContainerRef}
+          style={{
+            maxHeight: isHeaderFixed ? `${window.innerHeight - 64}px` : 'none',
+            overflowY: isHeaderFixed ? 'auto' : 'visible'
+          }}
+        >
+
           <table className="text-sm text-left text-gray-500" id="data-table">
-            <thead className={`table-header text-xs text-gray-700 uppercase ${isHeaderFixed ? 'sticky-header' : ''}`}>
+            <thead
+              className={`table-header text-xs text-gray-700 uppercase ${isHeaderFixed ? 'fixed' : ''}`}
+              style={{
+                position: isHeaderFixed ? 'sticky' : 'static',
+                top: isHeaderFixed ? '64px' : '0',
+                backgroundColor: '#F7FAFC',
+                zIndex: isHeaderFixed ? 100 : 'auto'
+              }}
+            >
+
+
               <tr>
                 <th scope="col" className="px-6 py-3 width-70">ティッカー</th>
                 <th scope="col" className="px-6 py-3 width-100">企業名</th>
