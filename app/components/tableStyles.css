@@ -30,25 +30,35 @@ body {
 table {
     border-collapse: collapse;   /* テーブルのセルの間の隙間を埋めて縦線を消す */
 }
+.table-header {
+    background-color: #F7FAFC;
+}
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
-.table-header {
-    background-color: #F7FAFC;
-    position: sticky;
-    top: 0;
-    z-index: 10; /* ヘッダーが他の要素よりも前に表示されるように */
-}
-/* スクロールバーの非表示設定 */
 .table-container {
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden; /* 縦スクロールバーを非表示に */
+    overflow-y: auto;
+    max-height: 500px; /* テーブルの最大高さを指定 */
+}
+.table-header-fixed {
+    position: relative;
+    width: 100%;
+    background-color: #F7FAFC;
+    z-index: 1;
 }
 #data-table {
     table-layout: fixed;
     width: 100%;
 }
+.table-header-fixed.fixed {
+    position: sticky;
+    top: 0;
+}
+.table-body {
+    width: 100%;
+}
+
 
 
 .width-40 {
