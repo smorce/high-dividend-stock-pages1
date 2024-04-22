@@ -30,34 +30,21 @@ body {
 table {
     border-collapse: collapse;   /* テーブルのセルの間の隙間を埋めて縦線を消す */
 }
-.table-header {
-    background-color: #F7FAFC;
-}
 .table-shadow {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
-
-
+.table-header {
+    background-color: #F7FAFC;
+    position: sticky;
+    top: 0;
+    z-index: 10; /* ヘッダーが他の要素よりも前に表示されるように */
+}
+/* スクロールバーの非表示設定 */
 .table-container {
     width: 100%;
-    overflow: hidden; /* Hide vertical scrollbar */
-    margin-top: 40px; /* Give some space from top for visibility */
+    overflow-x: auto;
+    overflow-y: hidden; /* 縦スクロールバーを非表示に */
 }
-
-#data-table {
-    width: 100%;
-    position: relative; /* Context for positioning */
-}
-
-.table-header {
-    position: sticky;
-    top: 0; /* Stick to the top of the table container */
-    background-color: #F7FAFC; /* Maintain background on scroll */
-    z-index: 10; /* Ensure it's above other content */
-    box-shadow: 0 2px 3px rgba(0,0,0,0.1); /* Optional: adds shadow to the header */
-}
-
-
 #data-table {
     table-layout: fixed;
     width: 100%;
