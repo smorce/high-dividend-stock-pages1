@@ -68,27 +68,17 @@ export default function Home({ data }: HomeProps) {
     setIsDataExpanded(!isDataExpanded);
   };
 
-
   useEffect(() => {
-    const headerElement = document.querySelector('.table-header');
-
-    const onScroll = () => {
-      if (headerElement) {
-        const headerTopPosition = headerElement.getBoundingClientRect().top + window.scrollY;
-        const scrollPosition = window.scrollY;
-
-        if (scrollPosition >= headerTopPosition) {
-          setIsHeaderFixed(true);
-        } else {
-          setIsHeaderFixed(false);
-        }
-      }
+    const handleScroll = () => {
+      const scrollPosition = window.pageYOffset;
+      setIsHeaderFixed(scrollPosition > 100);
     };
 
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
-
 
   return (
     <>
