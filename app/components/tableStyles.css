@@ -38,13 +38,21 @@ table {
 }
 .table-container {
     width: 100%;
-    overflow-x: auto;   /* 内容がコンテナの幅を超える場合にのみ横スクロールバーが表示されます */
+    overflow-x: auto;   /* 横スクロールバーが表示されるように設定 */
+    overflow-y: auto;   /* 縦スクロールバーを追加 */
+    max-height: 400px;  /* 最大高さを設定し、これを超えるとスクロールが有効になる */
 }
 #data-table {
     table-layout: fixed;
     width: 100%;
+    position: relative; /* テーブルヘッダーの固定位置の基準とする */
 }
-
+.table-header {
+    position: sticky; /* スクロールしてもヘッダーが上部に固定される */
+    top: 0; /* テーブルの上部からの距離 */
+    background-color: #F7FAFC; /* スクロール時に背景色を維持 */
+    z-index: 10; /* ヘッダーが他の要素より前面に来るように設定 */
+}
 
 .width-40 {
     width: 40px;
