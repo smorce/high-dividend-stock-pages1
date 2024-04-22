@@ -13,7 +13,7 @@
 // client コンポーネント
 "use client";  // この行を追加
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './tableStyles.css';
 
@@ -62,25 +62,19 @@ interface HomeProps {
 // export default async function Home({ data }: HomeProps) {
 export default function Home({ data }: HomeProps) {
   const [isDataExpanded, setIsDataExpanded] = useState(false);
+  const [isScrollAbove500, setIsScrollAbove500] = useState(false);
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
   };
 
+
   useEffect(() => {
-    const tableContainer = document.querySelector('.table-container') as HTMLDivElement;
-
-
     const handleScroll = () => {
-      // tableContainer が null でないことを確認
-      if (tableContainer) {
-        if (window.scrollY >= 500) {
-          tableContainer.style.overflowY = 'auto';
-          tableContainer.style.maxHeight = '800px';
-        } else {
-          tableContainer.style.overflowY = 'hidden';
-          tableContainer.style.maxHeight = 'none';
-        }
+      // スクロール位置が500px以上かどうかをチェックし、状態を更新
+      const isAbove500 = window.scrollY >= 500;
+      if (isAbove500 !== isScrollAbove500) {
+        setIsScrollAbove500(isAbove500);
       }
     };
 
@@ -91,7 +85,7 @@ export default function Home({ data }: HomeProps) {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isScrollAbove500]);
 
 
   return (
@@ -140,7 +134,7 @@ export default function Home({ data }: HomeProps) {
           </div>
         </div>
 
-        <div className="table-container mt-6 table-shadow">
+        <div className={`table-container mt-6 table-shadow ${isScrollAbove500 ? '' : 'no-scroll'}`}>
           <table className="text-sm text-left text-gray-500" id="data-table">
             <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>

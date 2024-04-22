@@ -51,6 +51,10 @@ table {
     background-color: #F7FAFC; /* スクロール時に背景色を維持 */
     z-index: 10; /* ヘッダーが他の要素より前面に来るように設定 */
 }
+.no-scroll {
+    overflow-y: hidden; /* スクロールバーを隠す */
+    max-height: none; /* 最大高さ制限を解除 */
+}
 
 
 .width-40 {
