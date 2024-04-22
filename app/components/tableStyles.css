@@ -40,7 +40,7 @@ table {
     width: 100%;
     overflow-x: auto;   /* 横スクロールバーが表示されるように設定 */
     overflow-y: auto;   /* 縦スクロールバーを追加 */
-    max-height: 550px;  /* 最大高さを設定し、これを超えるとスクロールが有効になる */
+    max-height: 800px;  /* 最大高さを設定し、これを超えるとスクロールが有効になる */
 }
 #data-table {
     table-layout: fixed;
