@@ -68,9 +68,10 @@ export default function Home({ data }: HomeProps) {
     setIsDataExpanded(!isDataExpanded);
   };
 
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsHeaderFixed(window.scrollY > 1000);
+      setIsHeaderFixed(window.scrollY > 500);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -78,6 +79,7 @@ export default function Home({ data }: HomeProps) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
 
   return (
     <>
@@ -125,7 +127,7 @@ export default function Home({ data }: HomeProps) {
           </div>
         </div>
 
-        <div className={`table-container mt-6 table-shadow ${isHeaderFixed ? 'table-scroll' : ''}`}>
+        <div className={`table-container ${isHeaderFixed ? 'table-scroll' : ''} mt-6 table-shadow`}>
           <table className="text-sm text-left text-gray-500" id="data-table">
             <thead className={`table-header text-xs text-gray-700 uppercase ${isHeaderFixed ? 'sticky-header' : ''}`}>
               <tr>
