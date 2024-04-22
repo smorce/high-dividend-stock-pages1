@@ -39,6 +39,8 @@ table {
 .table-container {
     width: 100%;
     overflow-x: auto;   /* 横スクロールバーが表示されるように設定 */
+    overflow-y: auto;   /* 縦スクロールバーを追加 */
+    max-height: 800px;  /* 最大高さを設定し、これを超えるとスクロールが有効になる */
 }
 #data-table {
     table-layout: fixed;
@@ -50,14 +52,6 @@ table {
     top: 0; /* テーブルの上部からの距離 */
     background-color: #F7FAFC; /* スクロール時に背景色を維持 */
     z-index: 10; /* ヘッダーが他の要素より前面に来るように設定 */
-}
-.no-scroll {
-    overflow-y: hidden; /* スクロールバーを隠す */
-    max-height: none; /* 最大高さ制限を解除 */
-}
-.scroll-active {
-    overflow-y: auto; /* スクロールバーを表示 */
-    max-height: 800px; /* 最大高さを400pxに設定 */
 }
 
 
