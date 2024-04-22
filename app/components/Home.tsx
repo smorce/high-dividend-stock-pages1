@@ -13,7 +13,7 @@
 // client コンポーネント
 "use client";  // この行を追加
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './tableStyles.css';
 
@@ -62,37 +62,10 @@ interface HomeProps {
 // export default async function Home({ data }: HomeProps) {
 export default function Home({ data }: HomeProps) {
   const [isDataExpanded, setIsDataExpanded] = useState(false);
-  const tableContainerRef = useRef<HTMLDivElement>(null); // テーブルコンテナの参照を初期化
 
   const toggleData = () => {
     setIsDataExpanded(!isDataExpanded);
   };
-  
-  useEffect(() => {
-    const handleScroll = () => {
-        const currentScrollPosition = window.scrollY;
-        const scrollThreshold = 500; // スクロール閾値を500pxに設定
-
-        if (currentScrollPosition > scrollThreshold) {
-            if (tableContainerRef.current) { // null チェックを追加
-                tableContainerRef.current.style.maxHeight = '800px';
-                tableContainerRef.current.style.overflowY = 'auto';
-            }
-        } else {
-            if (tableContainerRef.current) { // null チェックを追加
-                tableContainerRef.current.style.maxHeight = 'none';
-                tableContainerRef.current.style.overflowY = 'hidden';
-            }
-        }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-        window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
 
   return (
     <>
@@ -139,7 +112,8 @@ export default function Home({ data }: HomeProps) {
             </span>
           </div>
         </div>
-        <div ref={tableContainerRef} className="table-container mt-6 table-shadow">
+
+        <div className="table-container mt-6 table-shadow">
           <table className="text-sm text-left text-gray-500" id="data-table">
             <thead className="table-header text-xs text-gray-700 uppercase">
               <tr>
