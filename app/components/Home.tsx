@@ -3,7 +3,6 @@
 // 表のソート機能(配当利回り、総合得点)　→　実装が複雑になるのでやらない
 // 残：About に noteの記事
 // AnimatePresence の位置が変わったか大丈夫か？ → 大丈夫
-// GitHub Actions のデータ件数を5件に絞っているので解除する
 
 // Tips
 // item[col] as number と書くと数値型であるとTypeScriptの型チェッカーが数値型として認識し、算術演算を適用できるようになる
@@ -77,7 +76,7 @@ export default function Home({ data }: HomeProps) {
         </div>
         <ul className="nav-links">
           <li><a href="/">Home</a></li>  {/* HomeリンクがTOPページにリダイレクトするように変更 */}
-          <li><a href="#">About</a></li>
+          <li><a href="https://note.com/smorce/n/ne2f87592a184">About</a></li>
           <li><a href="https://twitter.com/smorce1">Twitter</a></li>
         </ul>
       </nav>
